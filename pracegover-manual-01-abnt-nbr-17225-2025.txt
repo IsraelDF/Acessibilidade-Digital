@@ -1,0 +1,176 @@
+================================================================================
+MANUAL 01 — CONHECENDO A ABNT NBR 17225:2025
+Coleção: Acessibilidade Digital — Guias práticos e referências técnicas
+Subtítulo: Um guia para compreender os requisitos de acessibilidade em websites.
+Autoria: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+Documento visual correspondente: manual-01-abnt-nbr-17225-2025-v6.pdf (20 páginas)
+================================================================================
+
+DESCRIÇÕES TEXTUAIS AMPLIADAS DAS PÁGINAS (#PraCegoVer)
+Arquivo complementar ordenado página a página (01/20 a 20/20) em sincronia
+com o PDF e com a página HTML acessível do Manual 01.
+
+--------------------------------------------------------------------------------
+PÁGINA 01/20 — CAPA · MANUAL 01 | 2026
+Título: CONHECENDO A ABNT NBR 17225:2025
+Referência normativa: ABNT NBR 17225:2025 · WCAG 2.2
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Capa do Manual 01 da coleção Acessibilidade Digital — Guias práticos e referências técnicas, com o título “CONHECENDO A ABNT NBR 17225:2025”, a indicação normativa “Acessibilidade em conteúdo e aplicações web — Requisitos.” e o subtítulo “Um guia para compreender os requisitos de acessibilidade em websites.”. Na parte central, ilustração colorida com quatro personagens interagindo com uma interface web conectada a teclado, leitor de tela, lupa de ampliação e vídeo com janela de Libras. Logo abaixo, uma faixa e quatro cartões identificam explicitamente esses quatro itens como eixos didáticos do manual (Teclado, Leitor de tela, Percepção visual e Multimídia), esclarecendo que a norma divide a Seção 5 de 5.1 a 5.16. Abaixo aparece a indicação de acesso ao arquivo TXT complementar via link e, no rodapé, a assinatura profissional completa.
+
+--------------------------------------------------------------------------------
+PÁGINA 02/20 — SEÇÃO 1 — ESCOPO
+Título: Um website pode funcionar para você e apresentar barreiras para outra pessoa?
+Referência normativa: Seção 1 — Escopo.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 02/20, Seção 1 — Escopo, intitulada “Um website pode funcionar para você e apresentar barreiras para outra pessoa?”. A parte superior apresenta ilustração com quatro quadros coloridos ligados entre si mostrando situações reais de uso: navegação por teclado, uso de leitor de tela com linha braille, ampliação de conteúdo sob luz forte e acompanhamento de vídeo com legendas. À esquerda inferior, o bloco “Onde surgem as dificuldades?” lista seis barreiras: navegar sem mouse, imagens sem descrição, organização do conteúdo, formulários, uso exclusivo de cores e áudio e vídeo. À direita, o bloco “O que estabelece a norma?” apresenta a definição da Seção 1 da ABNT NBR 17225:2025 para necessidades situacionais, temporárias ou permanentes, com nota esclarecendo que os exemplos práticos são contextualização editorial e não classificação normativa. Na faixa inferior aparece o destaque “Eliminar ou mitigar barreiras é parte essencial da construção de websites acessíveis.” e no rodapé a assinatura completa.
+
+--------------------------------------------------------------------------------
+PÁGINA 03/20 — SEÇÃO 5.1 — INTERAÇÃO POR TECLADO
+Título: Quando o mouse não é uma opção
+Referência normativa: Seção 5.1 — Interação por teclado.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 03/20, Seção 5.1 — Interação por teclado, intitulada “Quando o mouse não é uma opção”. À esquerda superior, ilustração de um personagem operando um site diretamente sobre um teclado luminoso sem mouse; à direita, três pontos sobre o que observar (foco identificável, ordem previsível e ausência de armadilha de foco). Na metade inferior esquerda, tabela intitulada “Itens selecionados da Seção 5.1 (total na norma: 5.1.1 a 5.1.16)” apresenta os três itens selecionados: 5.1.1 Indicador de foco visível (Requisito, 2.4.7 AA), 5.1.4 Ordem de foco previsível (Requisito, 2.4.3 A) e 5.1.6 Armadilha de foco (Requisito, 2.1.2 A). À direita, diagrama técnico mostra a tecla Tab avançando o anel de foco por Menu, Pesquisa e Buscar. Destaque inferior: “Se o usuário não consegue identificar onde está, a navegação se torna uma barreira.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 04/20 — SEÇÃO 5.2 — IMAGENS
+Título: Uma imagem pode transmitir muito mais do que sua aparência
+Referência normativa: Seção 5.2 — Imagens.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 04/20, Seção 5.2 — Imagens, intitulada “Uma imagem pode transmitir muito mais do que sua aparência”. À esquerda superior, ilustração com uma designer e um usuário de leitor de tela diante de quatro ícones: gráfico, lupa, ornamento e rede de dados. À direita superior, tabela intitulada “Itens selecionados da Seção 5.2 (total na norma: 5.2.1 a 5.2.6)” lista 5.2.1 a 5.2.4, todos classificados como Requisito (C.S. 1.1.1 A, além de 2.4.4 A e 2.4.9 AAA para imagens funcionais). Abaixo, quatro cartões diferenciam: Imagem de conteúdo (gráfico informativo), Imagem funcional (ícone de pesquisa comunicando função), Imagem decorativa (ornamento ignorado por tecnologia assistiva) e Imagem complexa (infográfico com descrição detalhada). Destaque: “Não basta inserir uma descrição. É preciso transmitir a informação ou a função que a imagem representa.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 05/20 — SEÇÃO 5.3 — CABEÇALHOS
+Título: Cabeçalhos: estrutura que também serve para navegar
+Referência normativa: Seção 5.3 — Cabeçalhos.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 05/20, Seção 5.3 — Cabeçalhos, intitulada “Cabeçalhos: estrutura que também serve para navegar”. Ilustração superior esquerda mostra um personagem organizando blocos estruturados de títulos na tela; à direita, três recomendações práticas sobre semântica, identificação de seções e hierarquia lógica. Na parte inferior esquerda, tabela completa da Seção 5.3 lista os cinco itens: 5.3.1 (Requisito), 5.3.2 (Requisito), 5.3.3 Cabeçalho principal (Recomendação), 5.3.4 Seções com cabeçalhos (Recomendação) e 5.3.5 Estrutura de cabeçalhos (Requisito). À direita, diagrama compara uma hierarquia lógica (H1 Acessibilidade digital, H2 Navegação por teclado, H3 Indicador de foco) com uma estrutura desordenada com saltos e inversões. Destaque: “Organizar visualmente não é suficiente. A estrutura também precisa ser identificada semanticamente.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 06/20 — SEÇÃO 5.4 — REGIÕES
+Título: Regiões: identificar as áreas importantes da página
+Referência normativa: Seção 5.4 — Regiões.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 06/20, Seção 5.4 — Regiões, intitulada “Regiões: identificar as áreas importantes da página”. Ilustração superior esquerda mostra um personagem mapeando blocos estruturais em um painel digital; à direita, orientações sobre função compatível, organização por tipo e nomes acessíveis únicos. Abaixo à esquerda, tabela da Seção 5.4 apresenta os itens 5.4.1 e 5.4.2 (Requisitos), 5.4.3 e 5.4.4 (Recomendações) e 5.4.5 Regiões identificadas unicamente (Requisito). À direita, diagrama esquemático representa cinco marcos estruturais por função (não como caixas visuais fixas): Cabeçalho, Navegação, Conteúdo principal, Conteúdo complementar e Rodapé. Destaque: “Uma página bem estruturada permite compreender não apenas o conteúdo, mas também onde cada informação está localizada.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 07/20 — SEÇÃO 5.5 — LISTAS
+Título: Listas: agrupar informações também é uma forma de organizar
+Referência normativa: Seção 5.5 — Listas.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 07/20, Seção 5.5 — Listas, intitulada “Listas: agrupar informações também é uma forma de organizar”. Ilustração superior esquerda exibe dois personagens organizando cartões ordenados, com marcadores e definições; à direita, explicam-se os três tipos de listas na web com exemplos (etapas de procedimento, relação de serviços e glossário técnico). Abaixo à esquerda, tabela da Seção 5.5 traz 5.5.1 Semântica de lista e 5.5.2 Uso de listas (ambos Requisitos, 1.3.1 A). À direita, diagrama apresenta três cartões lado a lado para lista ordenada (<ol>), não ordenada (<ul>) e de definições (<dl>). Destaque: “Uma sequência de linhas com marcadores visuais não substitui a identificação semântica de uma lista.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 08/20 — SEÇÃO 5.6 — TABELAS
+Título: Tabelas: relacionar informações com clareza
+Referência normativa: Seção 5.6 — Tabelas.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 08/20, Seção 5.6 — Tabelas, intitulada “Tabelas: relacionar informações com clareza”. Ilustração superior esquerda mostra personagem conectando linhas e colunas em uma grade de dados; à direita, quatro pontos sobre semântica tabular, cabeçalhos, títulos associados e descrição para tabelas complexas. Abaixo à esquerda, tabela completa da Seção 5.6 apresenta 5.6.1 a 5.6.3 e 5.6.5 como Requisitos (1.3.1 A), e 5.6.4 Título de tabela e 5.6.6 Descrição para tabelas complexas (3.1.5 AAA) como Recomendações, com atenção diferenciando tabelas de dados e de leiaute. À direita, diagrama exibe a tabela Serviço, Prazo e Situação (Cadastro, Análise e Aprovação) e compara Tabela de Dados com Tabela de Leiaute. Destaque: “A informação precisa manter suas relações, mesmo quando apresentada por uma tecnologia assistiva.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 09/20 — SEÇÃO 5.7 — LINKS E NAVEGAÇÃO
+Título: Links e navegação: o usuário precisa compreender para onde está indo
+Referência normativa: Seção 5.7 — Links e navegação.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 09/20, Seção 5.7 — Links e navegação, intitulada “Links e navegação: o usuário precisa compreender para onde está indo”. Ilustração superior esquerda mostra personagem atravessando uma passarela luminosa entre telas conectadas; à direita, cinco orientações práticas sobre propósito claro, avisos e consistência. Abaixo à esquerda, tabela intitulada “Itens selecionados da Seção 5.7 (total na norma: 5.7.1 a 5.7.16)” lista nove itens (5.7.1, 5.7.2, 5.7.4, 5.7.12, 5.7.13, 5.7.15 e 5.7.16 como Requisitos; 5.7.3 e 5.7.6 como Recomendações). À direita, diagrama compara “Clique aqui” com “Consultar os requisitos de acessibilidade” e mostra o mecanismo “Ir para o conteúdo principal” para contornar blocos repetidos. Destaque: “Um link acessível não deve exigir que o usuário adivinhe seu destino.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 10/20 — SEÇÃO 5.8 — BOTÕES E CONTROLES
+Título: Botões e controles: identificar, compreender e acionar
+Referência normativa: Seção 5.8 — Botões e controles.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 10/20, Seção 5.8 — Botões e controles, intitulada “Botões e controles: identificar, compreender e acionar”. Ilustração superior esquerda apresenta personagem tocando botões amplos sob lente de aumento; à direita, cinco orientações sobre semântica, consistência, áreas de acionamento e alternativas para gestos complexos. Abaixo à esquerda, tabela intitulada “Itens selecionados da Seção 5.8 (total na norma: 5.8.1 a 5.8.15)” traz oito itens (5.8.1, 5.8.2, 5.8.3, 5.8.5, 5.8.7, 5.8.12 e 5.8.13 como Requisitos e 5.8.6 como Recomendação). À direita, diagrama mostra os botões “Enviar formulário” e “Cancelar operação” e compara áreas de 24×24 e 44×44 pixels CSS. Destaque: “Não basta que um controle exista. Ele precisa ser identificado e acionado adequadamente.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 11/20 — SEÇÃO 5.9 — FORMULÁRIOS E ENTRADA DE DADOS
+Título: Formulários: preencher não deveria ser um exercício de adivinhação
+Referência normativa: Seção 5.9 — Formulários e entrada de dados.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 11/20, Seção 5.9 — Formulários e entrada de dados, intitulada “Formulários: preencher não deveria ser um exercício de adivinhação”. Ilustração superior esquerda mostra personagem preenchendo um formulário com validação acessível; à direita, quatro orientações sobre rótulos, agrupamento, obrigatoriedade e mensagens de erro com sugestão de correção. Abaixo à esquerda, tabela intitulada “Itens selecionados da Seção 5.9 (total na norma: 5.9.1 a 5.9.18)” lista nove requisitos (5.9.1 a 5.9.7, 5.9.9 e 5.9.10). À direita, diagrama exibe formulário com Nome completo, Endereço de e-mail e Telefone, destacando a mensagem descritiva: “Endereço de e-mail inválido. Verifique o preenchimento.”. Destaque: “Informar que existe um erro não é suficiente. O usuário precisa compreender onde ele ocorreu e como corrigi-lo.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 12/20 — SEÇÃO 5.10 — APRESENTAÇÃO
+Título: Apresentação: a informação precisa continuar acessível
+Referência normativa: Seção 5.10 — Apresentação.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 12/20, Seção 5.10 — Apresentação, intitulada “Apresentação: a informação precisa continuar acessível”. Ilustração superior esquerda mostra personagem verificando uma interface adaptada em computador, tablet e smartphone; à direita, quatro pontos sobre características sensoriais, ordem de apresentação, orientação e design responsivo. Abaixo à esquerda, tabela completa da Seção 5.10 lista 5.10.1 a 5.10.4 como Requisitos e 5.10.5 Área do indicador de foco visível como Recomendação. À direita, diagrama compara as três telas mantendo todas as informações e funcionalidades até 320 px CSS. Destaque: “Adaptar a apresentação não significa perder informação ou funcionalidade.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 13/20 — SEÇÃO 5.11 — USO DE CORES
+Título: Uso de cores: a informação não pode depender somente delas
+Referência normativa: Seção 5.11 — Uso de cores.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 13/20, Seção 5.11 — Uso de cores, intitulada “Uso de cores: a informação não pode depender somente delas”. Ilustração superior esquerda mostra personagem com verificador de contraste combinando cores, ícones e avisos textuais; à direita, quatro orientações sobre redundância visual e razões mínimas de contraste. Abaixo à esquerda, tabela completa da Seção 5.11 lista 5.11.1 e 5.11.3 a 5.11.6 como Requisitos, e 5.11.2 Contraste para texto aprimorado como Recomendação. À direita, diagrama compara aviso apenas por borda vermelha com aviso completo (cor, ícone e texto “Erro: obrigatório”) e exibe os patamares 3:1, 4,5:1 e 7:1. Destaque: “A informação precisa continuar disponível mesmo quando a cor não pode ser percebida.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 14/20 — SEÇÃO 5.12 — CONTEÚDO TEXTUAL
+Título: Conteúdo textual: ler também precisa ser uma experiência acessível
+Referência normativa: Seção 5.12 — Conteúdo textual.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 14/20, Seção 5.12 — Conteúdo textual, intitulada “Conteúdo textual: ler também precisa ser uma experiência acessível”. Ilustração superior esquerda mostra personagem leitor ajustando espaçamentos e ampliação em tela; à direita, quatro parâmetros normativos (entrelinhas ≥ 1,5×, parágrafos ≥ 2×, letras ≥ 0,12×, palavras ≥ 0,16×, largura até 80 caracteres e zoom até 200%). Abaixo à esquerda, tabela intitulada “Itens selecionados da Seção 5.12 (total na norma: 5.12.1 a 5.12.13)” lista 5.12.1 a 5.12.8 (7 Requisitos e 5.12.5 como Recomendação). À direita, diagrama compara espaçamento reduzido vs. ampliado e escalas de 100%, 150% e 200%. Destaque: “A apresentação do texto deve permitir adaptação sem comprometer a informação.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 15/20 — SEÇÃO 5.14 — ÁUDIO E VÍDEO
+Título: Vídeos acessíveis: legendas, transcrição e audiodescrição
+Referência normativa: Seção 5.14 — Áudio e vídeo, itens 5.14.2 a 5.14.5.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 15/20, Seção 5.14 — Áudio e vídeo, intitulada “Vídeos acessíveis: legendas, transcrição e audiodescrição”. Ilustração superior esquerda mostra dois personagens assistindo a um player com legendas e ondas sonoras; à direita, quatro definições sobre legendas descritivas, transcrição textual, audiodescrição e audiodescrição estendida. Abaixo à esquerda, tabela da Seção 5.14 cobre 5.14.2 e 5.14.4 (Requisitos) e 5.14.3 e 5.14.5 (Recomendações), além da exceção prevista no item 5.14.4. À direita, diagrama ilustra uma cena (pessoa entrando na sala, deixando objeto na mesa e iniciando apresentação) diferenciando os três recursos. Destaque: “Legendas e audiodescrição não são recursos equivalentes. Cada um comunica informações diferentes.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 16/20 — SEÇÃO 5.14.6 — JANELA DE LIBRAS
+Título: Libras e conteúdos multimídia: acessibilidade também é oferecer diferentes formas de acesso
+Referência normativa: Seção 5.14.6 — Janela de Libras para conteúdo em áudio.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 16/20, Seção 5.14.6 — Janela de Libras, intitulada “Libras e conteúdos multimídia: acessibilidade também é oferecer diferentes formas de acesso”. Ilustração superior esquerda mostra uma pessoa assistindo a vídeo com intérprete de Libras em janela lateral e legendas; à direita, quatro pontos explicam que o item 5.14.6 é uma Recomendação (C.S. 1.2.6, nível AAA) para conteúdo de áudio pré-gravado em mídia sincronizada, sem transformá-lo em obrigatoriedade genérica. Abaixo à esquerda, tabela referencia o item 5.14.6 com nota editorial; à direita, diagrama posiciona conteúdo visual principal, janela de Libras lateral e faixa de legendas sem sobreposição. Destaque: “Disponibilizar Libras é reconhecer a diversidade linguística e ampliar as possibilidades de acesso à informação.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 17/20 — SEÇÃO 4 — CONFORMIDADE
+Título: Requisitos e Recomendações: qual é a diferença?
+Referência normativa: ABNT NBR 17225:2025, Seção 4 — Conformidade.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 17/20, Seção 4 — Conformidade, intitulada “Requisitos e Recomendações: qual é a diferença?”. Ilustração superior esquerda mostra dois personagens em pilares ligados por uma ponte luminosa; à direita, quadro comparativo diferencia as duas categorias da norma (Requisitos considerados para os níveis A e AA como base da conformidade regular; Recomendações reunindo boas práticas, critérios mais rigorosos e itens que podem não ser exigíveis em todos os contextos), sem equivalência mecânica a AAA e alertando para consultar cada item na norma. Abaixo, dois cartões paralelos detalham “REQUISITO — O que precisa ser atendido” e “RECOMENDAÇÃO — O que amplia a qualidade da experiência”, seguidos por diagrama conectando os dois pilares com classificações distintas. Destaque: “Requisito e recomendação são classificações diferentes e devem ser identificados individualmente na norma.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 18/20 — SEÇÃO 4 — CONFORMIDADE
+Título: Como compreender a conformidade?
+Referência normativa: ABNT NBR 17225:2025, Seção 4 — Conformidade.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 18/20, Seção 4 — Conformidade, intitulada “Como compreender a conformidade?”. Ilustração superior esquerda apresenta um auditor analisando uma estrutura em dois níveis; à direita, tabela da Seção 4 apresenta as duas modalidades de conformidade: Conformidade regular (todos os requisitos atendidos, alinhada aos níveis A e AA da WCAG 2.2) e Conformidade plena (requisitos e recomendações, exigindo justificativa razoável quando alguma recomendação não for atendida), acompanhada da observação prática de que não basta contar itens nem há selo automático. Abaixo, dois cartões e um diagrama de dois patamares reforçam a estrutura regular e plena. Destaque: “Atender à norma exige verificar classificação, condições e alternativas previstas em cada item.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 19/20 — ANEXOS INFORMATIVOS A, B E C
+Título: Os anexos também ajudam a compreender a norma
+Referência normativa: ABNT NBR 17225:2025, Anexos A, B e C.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 19/20, Anexos informativos A, B e C, intitulada “Os anexos também ajudam a compreender a norma”. Ilustração superior esquerda mostra três consultores explorando os anexos; à direita, quadro resume o Anexo A (Itens problemáticos para acessibilidade, como CAPTCHA, reconhecimento facial, terceiros e customizados), Anexo B (Desempenho funcional em capacidades visuais, auditivas, motoras e cognitivas) e Anexo C (Checklist com classificação, critérios de sucesso, níveis WCAG e campos Sim, Não e N/A), com aviso de caráter informativo. Abaixo, diagrama com três módulos verticais detalha os três anexos. Destaque: “Os três anexos são informativos: complementam o estudo sem substituir os requisitos e recomendações.” e assinatura completa no rodapé.
+
+--------------------------------------------------------------------------------
+PÁGINA 20/20 — ENCERRAMENTO · SEÇÕES 1 E 4
+Título: A acessibilidade não se resume a uma lista de verificações
+Referência normativa: ABNT NBR 17225:2025, Seções 1 e 4.
+Assinatura: Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+
+#PraCegoVer: Página 20/20, Encerramento (Seções 1 e 4 da norma), intitulada “A acessibilidade não se resume a uma lista de verificações”. A composição traz cabeçalho em azul-marinho e ciano, seguido pela ilustração colorida de pessoas diversas convergindo por caminhos luminosos em torno de uma interface inclusiva. Abaixo, o quadro “Mensagem de Encerramento” apresenta fielmente os quatro parágrafos finais da versão-mestre sobre a ABNT NBR 17225:2025 como estrutura técnica, a necessidade complementar de usabilidade e atenção contínua à experiência das pessoas, e o convite final por uma web com mais responsabilidade técnica e inclusão. Na faixa inferior consta a indicação das descrições #PraCegoVer em arquivo TXT via link e, no rodapé, a assinatura profissional completa.
+
+================================================================================
+Fim do arquivo complementar — MANUAL 01 — CONHECENDO A ABNT NBR 17225:2025
+Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes
+================================================================================

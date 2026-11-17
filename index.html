@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="handbook">
+  <title>Manual 01 — Conhecendo a ABNT NBR 17225:2025 | Coleção Acessibilidade Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (light editorial navy + cyan) */
+      --background: #ffffff;
+      --surface-container-low: #f2f6fa;
+      --surface-container: #e6eef6;
+      --surface-container-high: #d4e2f0;
+
+      /* Ink */
+      --on-surface: #0b1526;
+      --on-surface-variant: #36495e;
+
+      /* Rules */
+      --outline: #0f294a;
+      --outline-variant: #9eb3c7;
+
+      /* Accents (navy and cyan, >= 4.5:1 text, >= 3:1 graphics & focus) */
+      --primary: #0f294a;
+      --primary-hover: #0a1d36;
+      --on-primary: #ffffff;
+      --primary-container: #d9f0f7;
+      --on-primary-container: #083344;
+      --secondary: #005a75;
+      --tertiary: #006d8f;
+      --cyan-graphic: #0284a8;
+      --cyan-tint: #e6f6fa;
+      --cyan-halo: #00b4d8;
+      --error: #b91c1c;
+      --on-error: #ffffff;
+      --positive: #0c5e42;
+      --positive-bg: #e4f4ee;
+      --warning: #7c4a03;
+      --warning-bg: #fef3c7;
+
+      /* Data series */
+      --data-1: #0f294a;
+      --data-2: #006d8f;
+      --data-3: #0284a8;
+      --data-4: #36495e;
+      --data-context: #9eb3c7;
+
+      /* Fonts */
+      --font-headline: 'Public Sans', system-ui, -apple-system, sans-serif;
+      --font-body: 'Public Sans', system-ui, -apple-system, sans-serif;
+      --font-label: 'Public Sans', system-ui, -apple-system, sans-serif;
+
+      /* Shape */
+      --rounded: 0;
+      --rounded-sm: 2px;
+      --rounded-lg: 0;
+
+      /* Style effects */
+      --top-index-rule: 6px solid var(--primary);
+      --inset-rule: 5px solid var(--tertiary);
+      --focus-ring: 3px solid var(--primary);
+      --focus-shadow: 0 0 0 2px var(--background), 0 0 0 6px var(--cyan-halo);
+      --button-ground: 0 2px 0 var(--primary-hover);
+      --button-ground-secondary: 0 2px 0 var(--outline-variant);
+
+      /* Type scale */
+      --display-size: clamp(1.75rem, 1.3rem + 2vw, 2.65rem);
+      --headline-size: clamp(1.375rem, 1.15rem + 1vw, 1.875rem);
+      --subhead-size: clamp(1.125rem, 1.02rem + 0.45vw, 1.35rem);
+      --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+      --label-size: clamp(0.75rem, 0.72rem + 0.12vw, 0.85rem);
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.25rem;
+      --space-2xl: 3.5rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 200ms;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: clip;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      position: static !important;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Skip links */
+    .skip-nav {
+      position: relative;
+      z-index: 50;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--primary);
+      color: var(--on-primary);
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid var(--background);
+    }
+
+    .skip-link:focus,
+    .skip-link:focus-visible {
+      position: static;
+      display: inline-flex;
+      margin: var(--space-xs) var(--space-xs) 0 0;
+      outline: var(--focus-ring);
+      outline-offset: 2px;
+      box-shadow: var(--focus-shadow);
+    }
+
+    /* Global focus style (>= 3:1 contrast on light & dark) */
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: 2px;
+      box-shadow: var(--focus-shadow);
+    }
+
+    /* Header */
+    .site-header {
+      background-color: var(--surface-container-low);
+      border-top: var(--top-index-rule);
+      border-bottom: 2px solid var(--primary);
+      padding: var(--space-md);
+    }
+
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .header-brand {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      min-width: 0;
+    }
+
+    .header-kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--tertiary);
+    }
+
+    .header-doc {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--primary);
+    }
+
+    .topic-jump {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .topic-jump label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+
+    .topic-jump select {
+      min-height: 44px;
+      max-width: 100%;
+      padding: var(--space-xs) var(--space-lg) var(--space-xs) var(--space-sm);
+      border: 2px solid var(--outline);
+      border-radius: var(--rounded-sm);
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Main layout shell */
+    .page-shell {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: var(--space-lg) var(--space-md) var(--space-2xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .page-shell * {
+      min-width: 0;
+    }
+
+    /* Active page article */
+    .manual-article {
+      background-color: var(--background);
+      border: 2px solid var(--primary);
+      border-top: var(--top-index-rule);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .article-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background-color: var(--primary);
+      color: var(--on-primary);
+      padding: var(--space-xs) var(--space-sm);
+    }
+
+    .norm-ref-tag {
+      display: inline-block;
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+      border-left: 4px solid var(--tertiary);
+      padding: var(--space-xs) var(--space-sm);
+    }
+
+    .manual-article h1 {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: var(--display-size);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--primary);
+    }
+
+    .manual-article h1.cover-title {
+      font-size: clamp(1.9rem, 1.4rem + 2.4vw, 2.9rem);
+      letter-spacing: -0.02em;
+    }
+
+    .manual-article h1:focus {
+      outline: var(--focus-ring);
+      outline-offset: 4px;
+    }
+
+    .cover-subhead-norm {
+      margin: 0;
+      font-size: var(--subhead-size);
+      font-weight: 700;
+      color: var(--tertiary);
+    }
+
+    .lead-text {
+      margin: 0;
+      font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+      font-weight: 500;
+      color: var(--on-surface);
+      max-width: 68ch;
+    }
+
+    .prose-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      max-width: 68ch;
+    }
+
+    .prose-block p {
+      margin: 0;
+    }
+
+    .manual-article h2 {
+      margin: var(--space-sm) 0 0;
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--primary);
+      border-bottom: 2px solid var(--surface-container-high);
+      padding-bottom: var(--space-xs);
+    }
+
+    .manual-article h3 {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: var(--subhead-size);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--primary);
+    }
+
+    /* Inset callouts and notes */
+    .inset-callout {
+      border-left: var(--inset-rule);
+      background-color: var(--surface-container-low);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .inset-callout--cyan {
+      border-left-color: var(--tertiary);
+      background-color: var(--cyan-tint);
+    }
+
+    .inset-callout--note {
+      border-left-color: var(--warning);
+      background-color: var(--surface-container-low);
+    }
+
+    .callout-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--tertiary);
+    }
+
+    .inset-callout--note .callout-label {
+      color: var(--warning);
+    }
+
+    /* Structured lists */
+    .check-list,
+    .detail-list {
+      margin: 0;
+      padding-left: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      max-width: 68ch;
+    }
+
+    .check-list li::marker,
+    .detail-list li::marker {
+      color: var(--tertiary);
+      font-weight: 800;
+    }
+
+    /* Two-column / grid cards inside content */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    .info-card {
+      background-color: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-top: 4px solid var(--tertiary);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .info-card--navy {
+      border-top-color: var(--primary);
+    }
+
+    .info-card p {
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    /* Tables */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--outline-variant);
+    }
+
+    table.norm-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.96rem;
+    }
+
+    table.norm-table caption {
+      caption-side: top;
+      text-align: left;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--surface-container);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 1rem;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    table.norm-table th,
+    table.norm-table td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: 1px solid var(--outline-variant);
+      vertical-align: top;
+      overflow-wrap: break-word;
+    }
+
+    table.norm-table thead th {
+      background-color: var(--surface-container-low);
+      color: var(--primary);
+      font-weight: 800;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    table.norm-table tbody th {
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+
+    .badge-req,
+    .badge-rec {
+      display: inline-block;
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 0.15rem 0.45rem;
+      white-space: nowrap;
+    }
+
+    .badge-req {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+
+    .badge-rec {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+      border: 1px solid var(--tertiary);
+    }
+
+    /* Technical SVG Diagrams */
+    .diagram-panel {
+      background-color: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-left: 5px solid var(--primary);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .diagram-panel svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 360px;
+    }
+
+    /* SVG token classes */
+    .svg-bg { fill: var(--background); }
+    .svg-tint { fill: var(--cyan-tint); }
+    .svg-panel { fill: var(--surface-container-low); stroke: var(--primary); stroke-width: 2; }
+    .svg-panel-cyan { fill: var(--cyan-tint); stroke: var(--tertiary); stroke-width: 2; }
+    .svg-panel-dashed { fill: var(--background); stroke: var(--cyan-graphic); stroke-width: 2; stroke-dasharray: 6 4; }
+    .svg-navy-fill { fill: var(--primary); }
+    .svg-cyan-fill { fill: var(--tertiary); }
+    .svg-line-navy { stroke: var(--primary); stroke-width: 2.5; fill: none; }
+    .svg-line-cyan { stroke: var(--cyan-graphic); stroke-width: 2.5; fill: none; }
+    .svg-line-muted { stroke: var(--outline-variant); stroke-width: 2; fill: none; }
+    .svg-text-dark { fill: var(--on-surface); font-family: var(--font-body); font-size: 13px; font-weight: 600; }
+    .svg-text-navy { fill: var(--primary); font-family: var(--font-body); font-size: 14px; font-weight: 800; }
+    .svg-text-cyan { fill: var(--tertiary); font-family: var(--font-body); font-size: 12px; font-weight: 800; }
+    .svg-text-white { fill: var(--on-primary); font-family: var(--font-body); font-size: 13px; font-weight: 700; }
+    .svg-text-error { fill: var(--error); font-family: var(--font-body); font-size: 12px; font-weight: 700; }
+    .svg-stroke-error { stroke: var(--error); stroke-width: 2; fill: var(--background); }
+
+    /* Page Signature */
+    .page-signature {
+      margin-top: var(--space-sm);
+      padding-top: var(--space-md);
+      border-top: 2px solid var(--primary);
+      font-family: var(--font-label);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Complementary PraCegoVer aside */
+    .complement-region {
+      background-color: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-left: var(--inset-rule);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .complement-region h2 {
+      margin: 0;
+      font-size: var(--subhead-size);
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .complement-region p {
+      margin: 0;
+      max-width: 68ch;
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      background-color: var(--background);
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    .resource-link:hover {
+      background-color: var(--primary-container);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Bottom Pagination */
+    .pagination-region {
+      background-color: var(--surface-container-low);
+      border: 2px solid var(--primary);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .pagination-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .pagination-status {
+      margin: 0;
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    .pagination-arrows {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border: 2px solid var(--primary);
+      border-radius: var(--rounded-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: var(--button-ground);
+      transition: background-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background-color: var(--tertiary);
+      border-color: var(--tertiary);
+    }
+
+    .nav-btn:active:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    .nav-btn:disabled {
+      background-color: var(--surface-container);
+      color: var(--on-surface-variant);
+      border-color: var(--outline-variant);
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .pagination-numbers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-num-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      padding: var(--space-xs);
+      background-color: var(--background);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      border-radius: var(--rounded-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      font-variant-numeric: tabular-nums;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+
+    .page-num-btn:hover {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+
+    .page-num-btn[aria-current="page"] {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--cyan-halo);
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      padding: var(--space-lg) var(--space-md);
+      border-top: 4px solid var(--cyan-graphic);
+    }
+
+    .site-footer p {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .footer-meta {
+      font-size: 0.9rem;
+      color: var(--primary-container);
+      padding-bottom: var(--space-xs);
+    }
+
+    .footer-sig {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--on-primary);
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      background-color: var(--surface-container);
+      color: var(--primary);
+      padding: 0.1rem 0.3rem;
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        padding: var(--space-sm);
+      }
+
+      .page-shell {
+        padding: var(--space-md) var(--space-sm) var(--space-xl);
+      }
+
+      .manual-article {
+        padding: var(--space-md);
+      }
+
+      .inset-callout {
+        padding: var(--space-sm) var(--space-md);
+      }
+
+      .pagination-region,
+      .complement-region {
+        padding: var(--space-md);
+      }
+
+      table.norm-table th,
+      table.norm-table td {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="skip-nav" aria-label="Atalhos de navegação">
+      <a class="skip-link" href="#conteudo-principal">Ir para o conteúdo principal</a>
+      <a class="skip-link" href="#seletor-tema">Ir para o tema desejado</a>
+      <a class="skip-link" href="#paginacao">Ir para a paginação</a>
+    </nav>
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="header-kicker">Coleção Acessibilidade Digital — Guias práticos e referências técnicas</span>
+        <span class="header-doc">Manual 01 — Conhecendo a ABNT NBR 17225:2025</span>
+      </div>
+      <div class="topic-jump">
+        <label for="seletor-tema">Ir para o tema desejado</label>
+        <select id="seletor-tema" onchange="goToPageFromSelect(this.value)">
+          <option value="1">01 — Capa: Conhecendo a ABNT NBR 17225:2025</option>
+          <option value="2">02 — Seção 1: Escopo e barreiras de acesso</option>
+          <option value="3">03 — Seção 5.1: Interação por teclado</option>
+          <option value="4">04 — Seção 5.2: Imagens</option>
+          <option value="5">05 — Seção 5.3: Cabeçalhos</option>
+          <option value="6">06 — Seção 5.4: Regiões</option>
+          <option value="7">07 — Seção 5.5: Listas</option>
+          <option value="8">08 — Seção 5.6: Tabelas</option>
+          <option value="9">09 — Seção 5.7: Links e navegação</option>
+          <option value="10">10 — Seção 5.8: Botões e controles</option>
+          <option value="11">11 — Seção 5.9: Formulários e entrada de dados</option>
+          <option value="12">12 — Seção 5.10: Apresentação</option>
+          <option value="13">13 — Seção 5.11: Uso de cores</option>
+          <option value="14">14 — Seção 5.12: Conteúdo textual</option>
+          <option value="15">15 — Seção 5.14: Vídeos acessíveis</option>
+          <option value="16">16 — Seção 5.14.6: Libras e conteúdos multimídia</option>
+          <option value="17">17 — Seção 4: Requisitos e recomendações</option>
+          <option value="18">18 — Seção 4: Como compreender a conformidade</option>
+          <option value="19">19 — Anexos informativos A, B e C</option>
+          <option value="20">20 — Encerramento</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <main id="conteudo-principal" class="main-region" tabindex="-1">
+      <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+      <article id="pagina-atual" class="manual-article" aria-labelledby="page-title">
+        <!-- Página 1 pré-renderizada para carregamento imediato e fallback -->
+        <div class="article-meta-bar">
+          <span class="page-badge">Página 01 de 20 — MANUAL 01 | 2026</span>
+          <span class="norm-ref-tag">ABNT NBR 17225:2025</span>
+        </div>
+        <h1 id="page-title" class="cover-title" tabindex="-1">CONHECENDO A ABNT NBR 17225:2025</h1>
+        <p class="cover-subhead-norm">Acessibilidade em conteúdo e aplicações web — Requisitos.</p>
+        <p class="lead-text">Um guia para compreender os requisitos de acessibilidade em websites.</p>
+        <div class="prose-block">
+          <p>
+            Este manual integra a <strong>Coleção Acessibilidade Digital — Guias práticos e referências técnicas</strong>
+            e apresenta uma introdução estruturada à norma brasileira <strong>ABNT NBR 17225:2025</strong>,
+            baseada nas diretrizes internacionais <em>Web Content Accessibility Guidelines 2.2 (WCAG 2.2)</em>.
+          </p>
+        </div>
+        <div class="inset-callout inset-callout--cyan">
+          <span class="callout-label">Organização didática do manual e estrutura da norma</span>
+          <p>
+            Os quatro eixos apresentados na capa — <strong>Teclado</strong>, <strong>Leitor de tela</strong>,
+            <strong>Percepção visual</strong> e <strong>Multimídia</strong> — são <strong>eixos didáticos adotados pelo manual</strong>
+            para facilitar o entendimento inicial das interações com um website. Na norma oficial, as diretrizes técnicas
+            estão organizadas na <strong>Seção 5</strong>, distribuídas de <strong>5.1 a 5.16</strong>.
+          </p>
+        </div>
+        <div class="diagram-panel">
+          <svg viewBox="0 0 680 250" role="img" aria-labelledby="diag-p1-title">
+            <title id="diag-p1-title">Esquema dos quatro eixos didáticos conectados à interface web e à Seção 5 da ABNT NBR 17225:2025</title>
+            <rect x="20" y="25" width="175" height="62" class="svg-panel" />
+            <text x="107" y="52" text-anchor="middle" class="svg-text-navy">Teclado</text>
+            <text x="107" y="72" text-anchor="middle" class="svg-text-cyan">Eixo didático 01</text>
+
+            <rect x="485" y="25" width="175" height="62" class="svg-panel" />
+            <text x="572" y="52" text-anchor="middle" class="svg-text-navy">Leitor de tela</text>
+            <text x="572" y="72" text-anchor="middle" class="svg-text-cyan">Eixo didático 02</text>
+
+            <rect x="20" y="155" width="175" height="62" class="svg-panel" />
+            <text x="107" y="182" text-anchor="middle" class="svg-text-navy">Percepção visual</text>
+            <text x="107" y="202" text-anchor="middle" class="svg-text-cyan">Eixo didático 03</text>
+
+            <rect x="485" y="155" width="175" height="62" class="svg-panel" />
+            <text x="572" y="182" text-anchor="middle" class="svg-text-navy">Multimídia</text>
+            <text x="572" y="202" text-anchor="middle" class="svg-text-cyan">Eixo didático 04</text>
+
+            <line x1="195" y1="56" x2="255" y2="105" class="svg-line-cyan" />
+            <line x1="485" y1="56" x2="425" y2="105" class="svg-line-cyan" />
+            <line x1="195" y1="186" x2="255" y2="140" class="svg-line-cyan" />
+            <line x1="485" y1="186" x2="425" y2="140" class="svg-line-cyan" />
+
+            <rect x="245" y="82" width="190" height="82" class="svg-navy-fill" />
+            <text x="340" y="112" text-anchor="middle" class="svg-text-white">Interface Digital Web</text>
+            <text x="340" y="133" text-anchor="middle" class="svg-text-white">ABNT NBR 17225:2025</text>
+            <text x="340" y="152" text-anchor="middle" class="svg-text-white">Seção 5: 5.1 a 5.16</text>
+          </svg>
+        </div>
+        <aside class="complement-region" aria-labelledby="titulo-pracegover">
+      <h2 id="titulo-pracegover">Descrições textuais ampliadas das páginas (#PraCegoVer)</h2>
+      <p>
+        Esta versão HTML oferece leitura estruturada e navegação acessível por tema e página. As descrições
+        textuais ampliadas das composições visuais das 20 páginas constam no arquivo complementar oficial externo,
+        elaborado em correspondência direta com o documento visual <code>manual-01-abnt-nbr-17225-2025-v6.pdf</code>.
+      </p>
+      <div>
+        <a class="resource-link" href="pracegover-manual-01-abnt-nbr-17225-2025-v3.txt">
+          Abrir arquivo complementar: pracegover-manual-01-abnt-nbr-17225-2025-v3.txt
+        </a>
+      </div>
+    </aside>
+        <div class="page-signature">Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) &amp; WCAG | Auditoria e Testes</div>
+      </article>
+    </main>
+
+
+    <nav id="paginacao" class="pagination-region" aria-label="Paginação do manual">
+      <div class="pagination-header">
+        <p id="pagination-status" class="pagination-status">Página 1 de 20 — Capa</p>
+        <div class="pagination-arrows">
+          <button type="button" id="btn-prev" class="nav-btn" onclick="prevPage()" disabled>Anterior</button>
+          <button type="button" id="btn-next" class="nav-btn" onclick="nextPage()">Próxima</button>
+        </div>
+      </div>
+      <ul id="pagination-list" class="pagination-numbers" aria-label="Selecionar página de 1 a 20"></ul>
+    </nav>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-meta">Coleção Acessibilidade Digital — Guias práticos e referências técnicas | Manual 01 | 2026</p>
+    <p class="footer-sig">Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) &amp; WCAG | Auditoria e Testes</p>
+  </footer>
+
+  <script>
+    const SIGNATURE = `Israel Costa | Consultor Técnico em Acessibilidade Digital | Quality Assurance (QA) & WCAG | Auditoria e Testes`;
+
+    const PAGES = [
+      {
+        num: 1,
+        shortLabel: `Capa`,
+        ref: `ABNT NBR 17225:2025 — MANUAL 01 | 2026`,
+        title: `CONHECENDO A ABNT NBR 17225:2025`,
+        isCover: true,
+        html: `
+          <p class="cover-subhead-norm">Acessibilidade em conteúdo e aplicações web — Requisitos.</p>
+          <p class="lead-text">Um guia para compreender os requisitos de acessibilidade em websites.</p>
+          <div class="prose-block">
+            <p>
+              Este manual integra a <strong>Coleção Acessibilidade Digital — Guias práticos e referências técnicas</strong>
+              e apresenta uma introdução estruturada à norma brasileira <strong>ABNT NBR 17225:2025</strong>,
+              baseada nas diretrizes internacionais <em>Web Content Accessibility Guidelines 2.2 (WCAG 2.2)</em>.
+            </p>
+          </div>
+          <div class="inset-callout inset-callout--cyan">
+            <span class="callout-label">Organização didática do manual e estrutura da norma</span>
+            <p>
+              Os quatro eixos apresentados na capa — <strong>Teclado</strong>, <strong>Leitor de tela</strong>,
+              <strong>Percepção visual</strong> e <strong>Multimídia</strong> — são <strong>eixos didáticos adotados pelo manual</strong>
+              para facilitar o entendimento inicial das interações com um website. Na norma oficial, as diretrizes técnicas
+              estão organizadas na <strong>Seção 5</strong>, distribuídas de <strong>5.1 a 5.16</strong>.
+            </p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 250" role="img" aria-labelledby="diag-p1-title">
+              <title id="diag-p1-title">Esquema dos quatro eixos didáticos conectados à interface web e à Seção 5 da ABNT NBR 17225:2025</title>
+              <rect x="20" y="25" width="175" height="62" class="svg-panel" />
+              <text x="107" y="52" text-anchor="middle" class="svg-text-navy">Teclado</text>
+              <text x="107" y="72" text-anchor="middle" class="svg-text-cyan">Eixo didático 01</text>
+
+              <rect x="485" y="25" width="175" height="62" class="svg-panel" />
+              <text x="572" y="52" text-anchor="middle" class="svg-text-navy">Leitor de tela</text>
+              <text x="572" y="72" text-anchor="middle" class="svg-text-cyan">Eixo didático 02</text>
+
+              <rect x="20" y="155" width="175" height="62" class="svg-panel" />
+              <text x="107" y="182" text-anchor="middle" class="svg-text-navy">Percepção visual</text>
+              <text x="107" y="202" text-anchor="middle" class="svg-text-cyan">Eixo didático 03</text>
+
+              <rect x="485" y="155" width="175" height="62" class="svg-panel" />
+              <text x="572" y="182" text-anchor="middle" class="svg-text-navy">Multimídia</text>
+              <text x="572" y="202" text-anchor="middle" class="svg-text-cyan">Eixo didático 04</text>
+
+              <line x1="195" y1="56" x2="255" y2="105" class="svg-line-cyan" />
+              <line x1="485" y1="56" x2="425" y2="105" class="svg-line-cyan" />
+              <line x1="195" y1="186" x2="255" y2="140" class="svg-line-cyan" />
+              <line x1="485" y1="186" x2="425" y2="140" class="svg-line-cyan" />
+
+              <rect x="245" y="82" width="190" height="82" class="svg-navy-fill" />
+              <text x="340" y="112" text-anchor="middle" class="svg-text-white">Interface Digital Web</text>
+              <text x="340" y="133" text-anchor="middle" class="svg-text-white">ABNT NBR 17225:2025</text>
+              <text x="340" y="152" text-anchor="middle" class="svg-text-white">Seção 5: 5.1 a 5.16</text>
+            </svg>
+          </div>
+          <aside class="complement-region" aria-labelledby="titulo-pracegover">
+      <h2 id="titulo-pracegover">Descrições textuais ampliadas das páginas (#PraCegoVer)</h2>
+      <p>
+        Esta versão HTML oferece leitura estruturada e navegação acessível por tema e página. As descrições
+        textuais ampliadas das composições visuais das 20 páginas constam no arquivo complementar oficial externo,
+        elaborado em correspondência direta com o documento visual <code>manual-01-abnt-nbr-17225-2025-v6.pdf</code>.
+      </p>
+      <div>
+        <a class="resource-link" href="pracegover-manual-01-abnt-nbr-17225-2025-v3.txt">
+          Abrir arquivo complementar: pracegover-manual-01-abnt-nbr-17225-2025-v3.txt
+        </a>
+      </div>
+    </aside>
+        `
+      },
+      {
+        num: 2,
+        shortLabel: `Seção 1 — Escopo`,
+        ref: `Seção 1 — Escopo`,
+        title: `Um website pode funcionar para você e apresentar barreiras para outra pessoa?`,
+        html: `
+          <div class="prose-block">
+            <p>Uma página pode parecer funcional para uma forma de interação e, ao mesmo tempo, impor barreiras importantes em outras situações de uso:</p>
+          </div>
+          <h2>Seis barreiras comuns na utilização de websites</h2>
+          <ol class="check-list">
+            <li>Navegar utilizando apenas o teclado, sem uso do mouse.</li>
+            <li>Compreender imagens e elementos visuais sem leitura visual direta.</li>
+            <li>Localizar títulos, regiões e conteúdos por meio de leitor de tela.</li>
+            <li>Preencher formulários sem rótulos claros ou mensagens de erro adequadas.</li>
+            <li>Perceber informações transmitidas exclusivamente por cores.</li>
+            <li>Acompanhar conteúdos em áudio e vídeo sem legendas, transcrição ou audiodescrição.</li>
+          </ol>
+          <h2>O que estabelece a norma?</h2>
+          <div class="prose-block">
+            <p>
+              A <strong>ABNT NBR 17225:2025</strong> estabelece os requisitos de acessibilidade para websites baseados nas
+              Diretrizes de Acessibilidade para Conteúdo Web 2.2 (WCAG 2.2), com o objetivo de facilitar e otimizar o acesso de
+              todas as pessoas com necessidades de acessibilidade — situacionais, temporárias ou permanentes —, principalmente as
+              pessoas com deficiência, eliminando ou mitigando as barreiras para utilização de websites.
+            </p>
+          </div>
+          <div class="inset-callout inset-callout--note">
+            <span class="callout-label">Nota editorial de escopo</span>
+            <p>
+              Os exemplos de situações de uso (situacionais, temporárias e permanentes) apresentados ao longo deste manual
+              constituem <strong>contextualização editorial</strong> para facilitar a compreensão prática, e <strong>não
+              representam uma classificação normativa formal</strong> da ABNT NBR 17225:2025.
+            </p>
+          </div>
+          <div class="inset-callout inset-callout--cyan">
+            <span class="callout-label">Mensagem de destaque</span>
+            <p><strong>Eliminar ou mitigar barreiras é parte essencial da construção de websites acessíveis.</strong></p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 210" role="img" aria-labelledby="diag-p2-title">
+              <title id="diag-p2-title">Fluxo de quatro situações de acesso para eliminação ou mitigação de barreiras</title>
+              <rect x="16" y="20" width="148" height="72" class="svg-panel" />
+              <text x="90" y="50" text-anchor="middle" class="svg-text-navy">Uso por teclado</text>
+              <text x="90" y="70" text-anchor="middle" class="svg-text-cyan">Navegação sem mouse</text>
+
+              <rect x="182" y="20" width="148" height="72" class="svg-panel" />
+              <text x="256" y="50" text-anchor="middle" class="svg-text-navy">Leitor de tela</text>
+              <text x="256" y="70" text-anchor="middle" class="svg-text-cyan">Estrutura semântica</text>
+
+              <rect x="348" y="20" width="148" height="72" class="svg-panel" />
+              <text x="422" y="50" text-anchor="middle" class="svg-text-navy">Ampliação visual</text>
+              <text x="422" y="70" text-anchor="middle" class="svg-text-cyan">Contraste e escala</text>
+
+              <rect x="514" y="20" width="150" height="72" class="svg-panel" />
+              <text x="589" y="50" text-anchor="middle" class="svg-text-navy">Mídia acessível</text>
+              <text x="589" y="70" text-anchor="middle" class="svg-text-cyan">Legendas e descrição</text>
+
+              <line x1="90" y1="92" x2="250" y2="138" class="svg-line-cyan" />
+              <line x1="256" y1="92" x2="310" y2="138" class="svg-line-cyan" />
+              <line x1="422" y1="92" x2="370" y2="138" class="svg-line-cyan" />
+              <line x1="589" y1="92" x2="430" y2="138" class="svg-line-cyan" />
+
+              <rect x="140" y="138" width="400" height="54" class="svg-navy-fill" />
+              <text x="340" y="162" text-anchor="middle" class="svg-text-white">ABNT NBR 17225:2025 — Seção 1 (Escopo)</text>
+              <text x="340" y="180" text-anchor="middle" class="svg-text-white">Eliminar ou mitigar barreiras no ambiente web</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 3,
+        shortLabel: `5.1 — Interação por teclado`,
+        ref: `Seção 5.1 — Interação por teclado (itens selecionados de 5.1.1 a 5.1.16)`,
+        title: `Quando o mouse não é uma opção`,
+        html: `
+          <p class="lead-text">A navegação por teclado precisa funcionar.</p>
+          <div class="prose-block">
+            <p>
+              Nem todas as pessoas utilizam o mouse para navegar em um website. Algumas utilizam exclusivamente o teclado
+              ou outros recursos de entrada para acessar links, botões, formulários e demais elementos interativos.
+            </p>
+          </div>
+          <h2>O que observar em um website?</h2>
+          <ul class="check-list">
+            <li>Todos os elementos focáveis devem possuir um indicador de foco visível.</li>
+            <li>Os elementos devem receber foco em ordem sequencial lógica e intuitiva, preservando significado e operabilidade.</li>
+            <li>Não podem existir componentes que bloqueiem, impeçam ou interrompam a navegação por teclado (armadilhas de foco).</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Itens selecionados da Seção 5.1 na ABNT NBR 17225:2025 (total na norma: 5.1.1 a 5.1.16)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                  <th scope="col">Critério WCAG 2.2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.1.1 — Indicador de foco visível</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 2.4.7 (Nível AA)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.1.4 — Ordem de foco previsível</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 2.4.3 (Nível A)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.1.6 — Armadilha de foco</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 2.1.2 (Nível A)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="inset-callout">
+            <span class="callout-label">Abrangência normativa</span>
+            <p>
+              Os três itens acima são <strong>itens selecionados</strong> para introduzir o tema. Na norma completa, a
+              <strong>Seção 5.1 (Interação por teclado) vai de 5.1.1 a 5.1.16</strong>, abrangendo também visibilidade do
+              elemento em foco, conteúdo adicional, atalhos e componentes customizados.
+            </p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 190" role="img" aria-labelledby="diag-p3-title">
+              <title id="diag-p3-title">Fluxo de ordem de foco sequencial com indicador visível e saída livre de armadilhas</title>
+              <rect x="20" y="36" width="120" height="58" class="svg-panel" />
+              <text x="80" y="61" text-anchor="middle" class="svg-text-navy">1. Menu</text>
+              <text x="80" y="80" text-anchor="middle" class="svg-text-cyan">Tab 1</text>
+
+              <line x1="140" y1="65" x2="178" y2="65" class="svg-line-cyan" />
+
+              <rect x="178" y="30" width="136" height="70" class="svg-panel-cyan" />
+              <rect x="172" y="24" width="148" height="82" class="svg-line-navy" />
+              <text x="246" y="61" text-anchor="middle" class="svg-text-navy">2. Botão ativo</text>
+              <text x="246" y="81" text-anchor="middle" class="svg-text-cyan">Foco visível (5.1.1)</text>
+
+              <line x1="314" y1="65" x2="356" y2="65" class="svg-line-cyan" />
+
+              <rect x="356" y="36" width="125" height="58" class="svg-panel" />
+              <text x="418" y="61" text-anchor="middle" class="svg-text-navy">3. Formulário</text>
+              <text x="418" y="80" text-anchor="middle" class="svg-text-cyan">Tab 3</text>
+
+              <line x1="481" y1="65" x2="520" y2="65" class="svg-line-cyan" />
+
+              <rect x="520" y="36" width="140" height="58" class="svg-panel" />
+              <text x="590" y="61" text-anchor="middle" class="svg-text-navy">4. Saída livre</text>
+              <text x="590" y="80" text-anchor="middle" class="svg-text-cyan">Sem armadilha (5.1.6)</text>
+
+              <rect x="20" y="132" width="640" height="38" class="svg-tint" />
+              <text x="340" y="156" text-anchor="middle" class="svg-text-navy">Sequência lógica e intuitiva preservada (5.1.4) — Total da Seção 5.1: 5.1.1 a 5.1.16</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 4,
+        shortLabel: `5.2 — Imagens`,
+        ref: `Seção 5.2 — Imagens (itens selecionados de 5.2.1 a 5.2.6)`,
+        title: `Uma imagem pode transmitir muito mais do que sua aparência`,
+        html: `
+          <p class="lead-text">O conteúdo visual também precisa ser acessível.</p>
+          <div class="prose-block">
+            <p>
+              Uma imagem pode apresentar uma informação, identificar uma função ou simplesmente decorar uma página.
+              Essas situações não devem ser tratadas da mesma maneira.
+            </p>
+          </div>
+          <h2>A norma diferencia quatro situações</h2>
+          <div class="card-grid">
+            <section class="info-card">
+              <h3>Imagem de conteúdo</h3>
+              <p>Transmite informação relevante e precisa de texto alternativo que descreva essa informação ou conteúdo.</p>
+            </section>
+            <section class="info-card">
+              <h3>Imagem funcional</h3>
+              <p>Identifica elementos interativos (como botões e links) e precisa de texto alternativo que descreva a sua funcionalidade.</p>
+            </section>
+            <section class="info-card">
+              <h3>Imagem decorativa</h3>
+              <p>Não transmite conteúdo ou é redundante ao texto adjacente; deve ter texto alternativo vazio ou ser ignorada por tecnologia assistiva.</p>
+            </section>
+            <section class="info-card">
+              <h3>Imagem complexa</h3>
+              <p>Reúne informações substanciais (gráficos, diagramas, infográficos) e exige texto alternativo e descrição detalhada.</p>
+            </section>
+          </div>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Itens selecionados da Seção 5.2 na ABNT NBR 17225:2025 (seção completa: 5.2.1 a 5.2.6)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                  <th scope="col">Critério WCAG 2.2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.2.1 — Texto alternativo para imagens de conteúdo</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 1.1.1 (Nível A)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.2.2 — Texto alternativo para imagens funcionais</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 1.1.1 (A); 2.4.4 (A); 2.4.9 (AAA)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.2.3 — Texto alternativo para imagens decorativas</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 1.1.1 (Nível A)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.2.4 — Descrição para imagens complexas</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 1.1.1 (Nível A)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="inset-callout">
+            <span class="callout-label">Abrangência normativa</span>
+            <p>
+              A <strong>Seção 5.2 completa vai de 5.2.1 a 5.2.6</strong>, incluindo também os requisitos 5.2.5 (Imagens de texto)
+              e 5.2.6 (Texto alternativo para mapas de imagens).
+            </p>
+          </div>
+          <div class="inset-callout inset-callout--cyan">
+            <span class="callout-label">Mensagem de destaque</span>
+            <p><strong>Não basta inserir uma descrição. É preciso transmitir a informação ou a função que a imagem representa.</strong></p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 190" role="img" aria-labelledby="diag-p4-title">
+              <title id="diag-p4-title">Quatro categorias de imagens e seus respectivos tratamentos de acessibilidade</title>
+              <rect x="16" y="20" width="150" height="150" class="svg-panel" />
+              <rect x="40" y="75" width="18" height="35" class="svg-cyan-fill" />
+              <rect x="66" y="55" width="18" height="55" class="svg-navy-fill" />
+              <rect x="92" y="42" width="18" height="68" class="svg-cyan-fill" />
+              <text x="91" y="135" text-anchor="middle" class="svg-text-navy">Conteúdo (5.2.1)</text>
+              <text x="91" y="154" text-anchor="middle" class="svg-text-cyan">alt descritivo</text>
+
+              <rect x="182" y="20" width="150" height="150" class="svg-panel" />
+              <circle cx="252" cy="70" r="18" class="svg-line-navy" />
+              <line x1="265" y1="83" x2="282" y2="100" class="svg-line-cyan" />
+              <text x="257" y="135" text-anchor="middle" class="svg-text-navy">Funcional (5.2.2)</text>
+              <text x="257" y="154" text-anchor="middle" class="svg-text-cyan">alt da ação (Pesquisar)</text>
+
+              <rect x="348" y="20" width="150" height="150" class="svg-panel-dashed" />
+              <line x1="382" y1="74" x2="464" y2="74" class="svg-line-muted" />
+              <circle cx="423" cy="74" r="10" class="svg-line-cyan" />
+              <text x="423" y="135" text-anchor="middle" class="svg-text-navy">Decorativa (5.2.3)</text>
+              <text x="423" y="154" text-anchor="middle" class="svg-text-cyan">alt="" (ignorada)</text>
+
+              <rect x="514" y="20" width="150" height="150" class="svg-panel" />
+              <rect x="542" y="44" width="38" height="24" class="svg-panel-cyan" />
+              <rect x="602" y="44" width="38" height="24" class="svg-panel-cyan" />
+              <rect x="572" y="84" width="38" height="24" class="svg-navy-fill" />
+              <line x1="561" y1="68" x2="585" y2="84" class="svg-line-navy" />
+              <line x1="621" y1="68" x2="597" y2="84" class="svg-line-navy" />
+              <text x="589" y="135" text-anchor="middle" class="svg-text-navy">Complexa (5.2.4)</text>
+              <text x="589" y="154" text-anchor="middle" class="svg-text-cyan">Descrição detalhada</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 5,
+        shortLabel: `5.3 — Cabeçalhos`,
+        ref: `Seção 5.3 — Cabeçalhos`,
+        title: `Cabeçalhos: estrutura que também serve para navegar`,
+        html: `
+          <div class="prose-block">
+            <p>
+              Um título não serve apenas para destacar um texto visualmente. Ele também organiza a informação.
+              Os cabeçalhos ajudam a identificar seções, estabelecer relações entre conteúdos e orientar a navegação.
+              Para pessoas que utilizam tecnologias assistivas, essa estrutura também funciona como recurso para localizar
+              rapidamente o assunto desejado.
+            </p>
+          </div>
+          <h2>O que observar em um website?</h2>
+          <ul class="check-list">
+            <li>Cabeçalhos devem possuir identificação semântica determinada programaticamente.</li>
+            <li>Devem identificar as seções de conteúdo.</li>
+            <li>Precisam seguir uma hierarquia lógica e coerente, sem saltos arbitrários.</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Seção 5.3 — Cabeçalhos na ABNT NBR 17225:2025</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.3.1 — Semântica de cabeçalho</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.3.2 — Uso de cabeçalhos</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.3.3 — Cabeçalho principal</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.3.4 — Seções com cabeçalhos</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.3.5 — Estrutura de cabeçalhos</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 210" role="img" aria-labelledby="diag-p5-title">
+              <title id="diag-p5-title">Comparativo entre hierarquia lógica de cabeçalhos H1, H2, H3 e estrutura desordenada</title>
+              <rect x="20" y="18" width="305" height="174" class="svg-panel" />
+              <text x="172" y="42" text-anchor="middle" class="svg-text-navy">Estrutura organizada (adequada)</text>
+              <rect x="40" y="58" width="265" height="30" class="svg-navy-fill" />
+              <text x="52" y="78" class="svg-text-white">H1 — Acessibilidade digital</text>
+              <rect x="64" y="100" width="241" height="30" class="svg-panel-cyan" />
+              <text x="76" y="120" class="svg-text-navy">H2 — Navegação por teclado</text>
+              <rect x="88" y="142" width="217" height="30" class="svg-panel" />
+              <text x="100" y="162" class="svg-text-cyan">H3 — Indicador de foco visível</text>
+
+              <rect x="355" y="18" width="305" height="174" class="svg-stroke-error" />
+              <text x="507" y="42" text-anchor="middle" class="svg-text-error">Estrutura desordenada (barreira)</text>
+              <rect x="375" y="58" width="265" height="30" class="svg-panel" />
+              <text x="387" y="78" class="svg-text-dark">H2 — Título sem H1 principal</text>
+              <rect x="375" y="100" width="265" height="30" class="svg-stroke-error" />
+              <text x="387" y="120" class="svg-text-error">H4 — Salto de nível (pulou H3)</text>
+              <rect x="375" y="142" width="265" height="30" class="svg-panel" />
+              <text x="387" y="162" class="svg-text-dark">Texto estilizado sem tag &lt;h*&gt;</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 6,
+        shortLabel: `5.4 — Regiões`,
+        ref: `Seção 5.4 — Regiões`,
+        title: `Regiões: identificar as áreas importantes da página`,
+        html: `
+          <div class="prose-block">
+            <p>
+              Um website também precisa comunicar como seu conteúdo está organizado. As regiões, também conhecidas como
+              marcos (<em>landmarks</em>), ajudam a identificar áreas importantes de uma página — como cabeçalho, navegação,
+              conteúdo principal, conteúdo complementar e rodapé — permitindo que usuários de tecnologias assistivas localizem
+              e acessem cada parte com mais facilidade.
+            </p>
+          </div>
+          <div class="inset-callout inset-callout--note">
+            <span class="callout-label">Função estrutural, não visual fixa</span>
+            <p>
+              As regiões representam <strong>funções estruturais determinadas programaticamente</strong> na árvore de
+              acessibilidade, e <strong>não caixas visuais fixas</strong> de leiaute. Uma página pode reorganizar sua
+              apresentação visual em diferentes telas mantendo a mesma semântica de regiões.
+            </p>
+          </div>
+          <h2>O que observar em um website?</h2>
+          <ul class="check-list">
+            <li>As regiões precisam possuir identificação semântica compatível com sua função.</li>
+            <li>Devem organizar o conteúdo de acordo com seu tipo.</li>
+            <li>Regiões do mesmo tipo na mesma página precisam ter nomes acessíveis que as diferenciem.</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Seção 5.4 — Regiões na ABNT NBR 17225:2025</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.4.1 — Semântica de região</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.4.2 — Uso de regiões</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.4.3 — Conteúdo em regiões</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.4.4 — Regiões únicas</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.4.5 — Regiões identificadas unicamente</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="inset-callout inset-callout--cyan">
+            <span class="callout-label">Mensagem de destaque</span>
+            <p><strong>Uma página bem estruturada permite compreender não apenas o conteúdo, mas também onde cada informação está localizada.</strong></p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 220" role="img" aria-labelledby="diag-p6-title">
+              <title id="diag-p6-title">Mapa estrutural das funções das regiões semânticas da página</title>
+              <rect x="210" y="16" width="260" height="44" class="svg-navy-fill" />
+              <text x="340" y="43" text-anchor="middle" class="svg-text-white">Árvore Semântica da Página</text>
+
+              <line x1="260" y1="60" x2="82" y2="112" class="svg-line-cyan" />
+              <line x1="300" y1="60" x2="210" y2="112" class="svg-line-cyan" />
+              <line x1="340" y1="60" x2="340" y2="112" class="svg-line-navy" />
+              <line x1="380" y1="60" x2="470" y2="112" class="svg-line-cyan" />
+              <line x1="420" y1="60" x2="598" y2="112" class="svg-line-cyan" />
+
+              <rect x="20" y="112" width="124" height="84" class="svg-panel" />
+              <text x="82" y="144" text-anchor="middle" class="svg-text-navy">Cabeçalho</text>
+              <text x="82" y="166" text-anchor="middle" class="svg-text-cyan">header / banner</text>
+
+              <rect x="150" y="112" width="120" height="84" class="svg-panel" />
+              <text x="210" y="144" text-anchor="middle" class="svg-text-navy">Navegação</text>
+              <text x="210" y="166" text-anchor="middle" class="svg-text-cyan">nav (única)</text>
+
+              <rect x="276" y="112" width="128" height="84" class="svg-panel-cyan" />
+              <text x="340" y="144" text-anchor="middle" class="svg-text-navy">Principal</text>
+              <text x="340" y="166" text-anchor="middle" class="svg-text-cyan">main</text>
+
+              <rect x="410" y="112" width="120" height="84" class="svg-panel" />
+              <text x="470" y="144" text-anchor="middle" class="svg-text-navy">Complementar</text>
+              <text x="470" y="166" text-anchor="middle" class="svg-text-cyan">aside</text>
+
+              <rect x="536" y="112" width="124" height="84" class="svg-panel" />
+              <text x="598" y="144" text-anchor="middle" class="svg-text-navy">Rodapé</text>
+              <text x="598" y="166" text-anchor="middle" class="svg-text-cyan">footer / contentinfo</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 7,
+        shortLabel: `5.5 — Listas`,
+        ref: `Seção 5.5 — Listas`,
+        title: `Listas: agrupar informações também é uma forma de organizar`,
+        html: `
+          <div class="prose-block">
+            <p>
+              Agrupar itens relacionados usando elementos semânticos de lista permite que tecnologias assistivas informem
+              ao usuário quantos itens existem no conjunto e qual é a relação entre eles, em vez de anunciá-los como linhas
+              soltas de texto.
+            </p>
+          </div>
+          <h2>Três tipos de listas semânticas</h2>
+          <div class="card-grid">
+            <section class="info-card">
+              <h3>Listas ordenadas (&lt;ol&gt;)</h3>
+              <p>Indicam uma sequência, ordem ou hierarquia de etapas em que a posição de cada item possui significado.</p>
+            </section>
+            <section class="info-card">
+              <h3>Listas não ordenadas (&lt;ul&gt;)</h3>
+              <p>Agrupam itens relacionados entre si quando a ordem de apresentação não altera o sentido do conjunto.</p>
+            </section>
+            <section class="info-card">
+              <h3>Listas de definições (&lt;dl&gt;)</h3>
+              <p>Associam pares de termos (&lt;dt&gt;) e suas respectivas descrições ou definições (&lt;dd&gt;).</p>
+            </section>
+          </div>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Seção 5.5 — Listas na ABNT NBR 17225:2025</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                  <th scope="col">Critério WCAG 2.2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.5.1 — Semântica de lista</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 1.3.1 (Nível A)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.5.2 — Uso de listas</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 1.3.1 (Nível A)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 185" role="img" aria-labelledby="diag-p7-title">
+              <title id="diag-p7-title">Comparativo técnico entre lista ordenada, lista não ordenada e lista de definições</title>
+              <rect x="20" y="20" width="200" height="145" class="svg-panel" />
+              <text x="120" y="46" text-anchor="middle" class="svg-text-navy">Ordenada (&lt;ol&gt;)</text>
+              <text x="40" y="78" class="svg-text-dark">1. Identificar barreira</text>
+              <text x="40" y="106" class="svg-text-dark">2. Aplicar critério</text>
+              <text x="40" y="134" class="svg-text-dark">3. Validar resultado</text>
+
+              <rect x="240" y="20" width="200" height="145" class="svg-panel-cyan" />
+              <text x="340" y="46" text-anchor="middle" class="svg-text-navy">Não ordenada (&lt;ul&gt;)</text>
+              <text x="260" y="78" class="svg-text-dark">• Teclado</text>
+              <text x="260" y="106" class="svg-text-dark">• Leitor de tela</text>
+              <text x="260" y="134" class="svg-text-dark">• Linha Braille</text>
+
+              <rect x="460" y="20" width="200" height="145" class="svg-panel" />
+              <text x="560" y="46" text-anchor="middle" class="svg-text-navy">Definições (&lt;dl&gt;)</text>
+              <text x="480" y="78" class="svg-text-cyan">Termo (&lt;dt&gt;): Foco</text>
+              <text x="480" y="102" class="svg-text-dark">Descrição (&lt;dd&gt;): Sinal</text>
+              <text x="480" y="124" class="svg-text-dark">gráfico no elemento ativo</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 8,
+        shortLabel: `5.6 — Tabelas`,
+        ref: `Seção 5.6 — Tabelas`,
+        title: `Tabelas: relacionar informações com clareza`,
+        html: `
+          <div class="prose-block">
+            <p>
+              Dados tabulares dependem da relação entre linhas e colunas para fazer sentido. Quando uma tabela de dados é
+              estruturada corretamente, usuários de tecnologias assistivas conseguem navegar célula a célula sabendo a qual
+              cabeçalho de coluna e de linha cada valor pertence.
+            </p>
+          </div>
+          <h2>Tabela de dados versus tabela de leiaute</h2>
+          <div class="card-grid">
+            <section class="info-card info-card--navy">
+              <h3>Tabela de dados</h3>
+              <p>
+                Organiza informações em linhas e colunas em que a posição da célula define o relacionamento entre os dados.
+                Requer semântica de tabela (<code>&lt;table&gt;</code>), cabeçalhos associados (<code>&lt;th&gt;</code> com
+                <code>scope</code>) e título associado (<code>&lt;caption&gt;</code>).
+              </p>
+            </section>
+            <section class="info-card">
+              <h3>Tabela de leiaute</h3>
+              <p>
+                É usada apenas para posicionar visualmente elementos não tabulares na tela. Essa prática deve ser evitada
+                (Anexo A.1.8); caso seja usada, toda a semântica de tabela deve ser removida para não confundir tecnologias assistivas.
+              </p>
+            </section>
+          </div>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Seção 5.6 — Tabelas na ABNT NBR 17225:2025</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.6.1 — Semântica de tabela</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.6.2 — Uso de Tabelas</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.6.3 — Cabeçalhos de tabela</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.6.4 — Título de tabela</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.6.5 — Título de tabela associado</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.6.6 — Descrição para tabelas complexas</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 195" role="img" aria-labelledby="diag-p8-title">
+              <title id="diag-p8-title">Comparação entre tabela de dados com semântica correta e tabela de leiaute inadequada</title>
+              <rect x="20" y="18" width="320" height="158" class="svg-panel" />
+              <rect x="20" y="18" width="320" height="32" class="svg-navy-fill" />
+              <text x="180" y="39" text-anchor="middle" class="svg-text-white">&lt;caption&gt; Tabela de dados semântica</text>
+              <rect x="34" y="62" width="140" height="28" class="svg-panel-cyan" />
+              <rect x="186" y="62" width="140" height="28" class="svg-panel-cyan" />
+              <text x="104" y="81" text-anchor="middle" class="svg-text-navy">&lt;th scope="col"&gt;</text>
+              <text x="256" y="81" text-anchor="middle" class="svg-text-navy">&lt;th scope="col"&gt;</text>
+              <rect x="34" y="98" width="140" height="28" class="svg-panel" />
+              <rect x="186" y="98" width="140" height="28" class="svg-bg" />
+              <text x="104" y="117" text-anchor="middle" class="svg-text-cyan">&lt;th scope="row"&gt;</text>
+              <text x="256" y="117" text-anchor="middle" class="svg-text-dark">&lt;td&gt; Dado</text>
+              <text x="180" y="156" text-anchor="middle" class="svg-text-navy">Relação linha × coluna clara</text>
+
+              <rect x="360" y="18" width="300" height="158" class="svg-stroke-error" />
+              <text x="510" y="42" text-anchor="middle" class="svg-text-error">Tabela de leiaute (evitar — A.1.8)</text>
+              <rect x="380" y="62" width="120" height="64" class="svg-panel-dashed" />
+              <text x="440" y="98" text-anchor="middle" class="svg-text-dark">Menu visual</text>
+              <rect x="516" y="62" width="124" height="64" class="svg-panel-dashed" />
+              <text x="578" y="98" text-anchor="middle" class="svg-text-dark">Texto livre</text>
+              <text x="510" y="156" text-anchor="middle" class="svg-text-error">Não usar para posicionamento visual</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 9,
+        shortLabel: `5.7 — Links e navegação`,
+        ref: `Seção 5.7 — Links e navegação (itens selecionados de 5.7.1 a 5.7.16)`,
+        title: `Links e navegação: o usuário precisa compreender para onde está indo`,
+        html: `
+          <p class="lead-text">Um link precisa comunicar seu destino ou sua função.</p>
+          <div class="prose-block">
+            <p>
+              Links permitem navegar entre páginas e acessar conteúdos dentro de uma mesma página. Para que essa navegação
+              seja compreensível, os links precisam possuir identificação semântica e apresentar informações claras sobre sua
+              finalidade.
+            </p>
+          </div>
+          <h2>O que observar em um website?</h2>
+          <ul class="check-list">
+            <li>Links devem possuir semântica determinada programaticamente.</li>
+            <li>Sua finalidade deve ser compreensível pelo texto, texto alternativo, nome acessível ou contexto.</li>
+            <li>Links que abrem novas guias ou janelas devem informar esse comportamento, conforme recomendação da norma.</li>
+            <li>Mecanismos de navegação repetidos devem manter uma ordem consistente entre páginas.</li>
+            <li>Deve existir mecanismo para contornar blocos de conteúdo que se repetem em um conjunto de páginas.</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Itens selecionados da Seção 5.7 na ABNT NBR 17225:2025 (seção completa: 5.7.1 a 5.7.16)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                  <th scope="col">Critério WCAG 2.2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.7.1 — Semântica de link</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 1.3.1 (A)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.7.2 — Uso de links</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 1.3.1 (A)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.7.3 — Propósito do link sem contexto</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                  <td>C.S. 2.4.4 (A); 2.4.9 (AAA)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.7.4 — Propósito do link no contexto</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 2.4.4 (A)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.7.6 — Links que abrem em uma nova guia ou janela</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                  <td>C.S. 2.4.4 (A); 2.4.9 (AAA); 3.2.5 (AAA)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.7.12 — Links para contornar blocos de conteúdo em conjunto de páginas</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 2.4.1 (A)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.7.13 — Alternativas para localização</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 2.4.5 (AA)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.7.15 — Navegação consistente</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 3.2.3 (AA)</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.7.16 — Ajuda consistente</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 3.2.6 (A)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="inset-callout">
+            <span class="callout-label">Abrangência normativa</span>
+            <p>A <strong>Seção 5.7 completa vai de 5.7.1 a 5.7.16</strong>, incluindo links para arquivos não HTML (5.7.7), sites externos (5.7.8), links adjacentes (5.7.10) e localização em conjunto de páginas (5.7.14).</p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 185" role="img" aria-labelledby="diag-p9-title">
+              <title id="diag-p9-title">Comparativo de propósito de link e salto de blocos de navegação</title>
+              <rect x="20" y="20" width="305" height="68" class="svg-stroke-error" />
+              <text x="172" y="48" text-anchor="middle" class="svg-text-error">Link ambíguo: "Clique aqui"</text>
+              <text x="172" y="70" text-anchor="middle" class="svg-text-dark">Não informa destino fora de contexto</text>
+
+              <rect x="355" y="20" width="305" height="68" class="svg-panel-cyan" />
+              <text x="507" y="48" text-anchor="middle" class="svg-text-navy">Link claro: "Consultar requisitos da norma"</text>
+              <text x="507" y="70" text-anchor="middle" class="svg-text-cyan">Comunica destino e função (5.7.3 / 5.7.4)</text>
+
+              <rect x="20" y="110" width="640" height="56" class="svg-panel" />
+              <rect x="36" y="122" width="210" height="32" class="svg-navy-fill" />
+              <text x="141" y="143" text-anchor="middle" class="svg-text-white">Saltar ao conteúdo (5.7.12)</text>
+              <line x1="246" y1="138" x2="365" y2="138" class="svg-line-cyan" />
+              <rect x="365" y="122" width="275" height="32" class="svg-panel-cyan" />
+              <text x="502" y="143" text-anchor="middle" class="svg-text-navy">Contorna menus repetidos → Conteúdo</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 10,
+        shortLabel: `5.8 — Botões e controles`,
+        ref: `Seção 5.8 — Botões e controles (itens selecionados de 5.8.1 a 5.8.15)`,
+        title: `Botões e controles: identificar, compreender e acionar`,
+        html: `
+          <p class="lead-text">Um elemento interativo precisa ser reconhecido e permitir que o usuário execute sua função.</p>
+          <div class="prose-block">
+            <p>
+              Botões e links possuem finalidades distintas: <strong>links</strong> permitem navegar para um destino, enquanto
+              <strong>botões</strong> permitem acionar uma funcionalidade. Ambos precisam ser perceptíveis, compreensíveis
+              e operáveis por diferentes modos de entrada.
+            </p>
+          </div>
+          <h2>Área de acionamento e alternativas de entrada</h2>
+          <ul class="check-list">
+            <li>Botões precisam possuir semântica determinada programaticamente e rótulo que comunique sua função.</li>
+            <li>Elementos com a mesma funcionalidade devem manter identificação consistente em um conjunto de páginas.</li>
+            <li><strong>Área de acionamento mínima (5.8.7 — Requisito):</strong> alvos de ponteiro com pelo menos <strong>24 × 24 pixels CSS</strong>, observadas as exceções e condições de espaçamento previstas na norma (ex.: quando há espaçamento suficiente em torno do alvo ou controle em linha no texto).</li>
+            <li><strong>Área de acionamento aprimorada (5.8.6 — Recomendação):</strong> alvos com pelo menos <strong>44 × 44 pixels CSS</strong>, exceto nos casos previstos na norma (como controles equivalentes ou em linha no fluxo de texto).</li>
+            <li>Gestos multiponto/baseados em caminho e movimentos de arrastar devem possuir alternativa acionável por ponteiro único (sem arrastar).</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Itens selecionados da Seção 5.8 na ABNT NBR 17225:2025 (seção completa: 5.8.1 a 5.8.15)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.8.1 — Semântica de botão</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.8.2 — Uso de botões</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.8.3 — Propósito do botão</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.8.5 — Identificação consistente em conjunto de páginas</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.8.6 — Área de acionamento (aprimorada)</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.8.7 — Área de acionamento (mínima)</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.8.12 — Operação por gestos de ponteiro</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">5.8.13 — Operação por movimento de arrastar</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="inset-callout">
+            <span class="callout-label">Abrangência normativa</span>
+            <p>A <strong>Seção 5.8 completa vai de 5.8.1 a 5.8.15</strong>, abrangendo também mudança de contexto previsível (5.8.8 a 5.8.10), acionamento por ponteiro único (5.8.11), operação por movimento (5.8.14) e controles com retorno (5.8.15).</p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 180" role="img" aria-labelledby="diag-p10-title">
+              <title id="diag-p10-title">Comparativo entre área de acionamento mínima de 24 por 24 pixels e aprimorada de 44 por 44 pixels CSS</title>
+              <rect x="20" y="20" width="290" height="140" class="svg-panel" />
+              <text x="165" y="46" text-anchor="middle" class="svg-text-navy">Área mínima — 5.8.7 (Requisito)</text>
+              <rect x="145" y="64" width="40" height="40" class="svg-panel-cyan" />
+              <text x="165" y="128" text-anchor="middle" class="svg-text-cyan">24 × 24 px CSS (+ condições)</text>
+
+              <rect x="370" y="20" width="290" height="140" class="svg-panel-cyan" />
+              <text x="515" y="46" text-anchor="middle" class="svg-text-navy">Área aprimorada — 5.8.6 (Recomendação)</text>
+              <rect x="480" y="56" width="70" height="70" class="svg-navy-fill" />
+              <text x="515" y="96" text-anchor="middle" class="svg-text-white">44 × 44 px</text>
+              <text x="515" y="145" text-anchor="middle" class="svg-text-cyan">Maior precisão ao toque e ponteiro</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 11,
+        shortLabel: `5.9 — Formulários`,
+        ref: `Seção 5.9 — Formulários e entrada de dados (itens selecionados de 5.9.1 a 5.9.18)`,
+        title: `Formulários: preencher não deveria ser um exercício de adivinhação`,
+        html: `
+          <p class="lead-text">Cada campo precisa comunicar o que espera receber.</p>
+          <div class="prose-block">
+            <p>
+              Formulários permitem inserir e enviar informações em cadastros, pedidos e mensagens. Quando os campos não
+              possuem identificação clara, instruções compreensíveis ou mensagens de erro adequadas, o preenchimento se torna
+              uma barreira.
+            </p>
+          </div>
+          <h2>O que observar em um website?</h2>
+          <ul class="check-list">
+            <li>Cada campo precisa possuir rótulo associado programaticamente e posicionado de forma previsível.</li>
+            <li>Rótulos e textos de ajuda devem descrever o formato esperado e identificar campos obrigatórios.</li>
+            <li>Campos relacionados devem possuir agrupamento determinado programaticamente.</li>
+            <li>Mensagens de erro devem identificar o campo afetado, explicar o problema e oferecer sugestão de correção quando conhecida.</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Itens selecionados da Seção 5.9 na ABNT NBR 17225:2025 (seção completa: 5.9.1 a 5.9.18)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">5.9.1 — Rótulo de campo</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.9.2 — Rótulo de campo previsível</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.9.3 — Rótulo de campo associado</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.9.4 — Rótulo de campo descritivo</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.9.5 — Textos de ajuda previsíveis</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.9.6 — Campos relacionados</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.9.7 — Campos obrigatórios</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.9.9 — Mensagem de erro descritiva</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.9.10 — Sugestão de correção</th><td><span class="badge-req">Requisito</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="inset-callout">
+            <span class="callout-label">Abrangência normativa</span>
+            <p>A <strong>Seção 5.9 completa vai de 5.9.1 a 5.9.18</strong>, incluindo tipo de dado determinado (5.9.8), prevenção de erro (5.9.11 e 5.9.12), reentrada de dados (5.9.15) e autenticação acessível (5.9.17 e 5.9.18).</p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 205" role="img" aria-labelledby="diag-p11-title">
+              <title id="diag-p11-title">Esquema de formulário acessível com rótulo associado, obrigatoriedade e mensagem de erro com sugestão</title>
+              <rect x="20" y="16" width="640" height="172" class="svg-panel" />
+              <text x="40" y="42" class="svg-text-navy">1. Nome completo * (Obrigatório — 5.9.7)</text>
+              <rect x="40" y="50" width="260" height="32" class="svg-bg" stroke="#0f294a" stroke-width="2" />
+              <text x="50" y="71" class="svg-text-dark">Rótulo associado (&lt;label for&gt;)</text>
+
+              <text x="340" y="42" class="svg-text-navy">2. Endereço de e-mail *</text>
+              <rect x="340" y="50" width="295" height="32" class="svg-stroke-error" />
+              <text x="350" y="71" class="svg-text-error">Erro: formato inválido (5.9.9)</text>
+
+              <rect x="340" y="92" width="295" height="44" class="svg-tint" />
+              <text x="350" y="112" class="svg-text-navy">Sugestão (5.9.10): informe um e-mail</text>
+              <text x="350" y="128" class="svg-text-cyan">no formato nome@dominio.com</text>
+
+              <text x="40" y="114" class="svg-text-navy">3. Telefone (opcional)</text>
+              <rect x="40" y="122" width="260" height="32" class="svg-bg" stroke="#006d8f" stroke-width="2" />
+              <text x="50" y="143" class="svg-text-cyan">Ajuda: DDD + número (5.9.5)</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 12,
+        shortLabel: `5.10 — Apresentação`,
+        ref: `Seção 5.10 — Apresentação`,
+        title: `Apresentação: a informação precisa continuar acessível`,
+        html: `
+          <div class="prose-block">
+            <p>
+              A aparência de uma página não pode comprometer seu significado ou sua utilização. A apresentação envolve
+              cores, fontes, leiaute, imagens e outras características visuais e sensoriais, devendo preservar a compreensão
+              e a operação do conteúdo em qualquer orientação ou tamanho de tela.
+            </p>
+          </div>
+          <h2>O que observar em um website?</h2>
+          <ul class="check-list">
+            <li>Instruções não devem depender somente de forma, cor, tamanho, localização visual, orientação ou som.</li>
+            <li>A ordem visual de apresentação deve corresponder à ordem lógica de leitura e interação.</li>
+            <li>O conteúdo não pode restringir a exibição a uma única orientação (retrato ou paisagem), salvo quando essencial.</li>
+            <li>O design responsivo deve adaptar o conteúdo até larguras reduzidas sem perda de informação ou rolagem bidimensional indevida.</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Seção 5.10 — Apresentação na ABNT NBR 17225:2025</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                  <th scope="col">Observação normativa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.10.1 — Características sensoriais</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>Independência de forma, cor, posição ou som isolados</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.10.2 — Ordem de apresentação</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>Preservação do significado na disposição visual</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.10.3 — Orientação de exibição</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>Suporte a retrato e paisagem</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.10.4 — Design responsivo</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>C.S. 1.4.10 (AA) — Refluxo sem perda de conteúdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.10.5 — Área do indicador de foco visível</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                  <td>C.S. 2.4.13 (AAA) — Área mínima equivalente a 2 px CSS</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 185" role="img" aria-labelledby="diag-p12-title">
+              <title id="diag-p12-title">Adaptação responsiva preservando conteúdo e funcionalidades em computador, tablet e smartphone</title>
+              <rect x="20" y="20" width="260" height="145" class="svg-panel" />
+              <text x="150" y="44" text-anchor="middle" class="svg-text-navy">Computador (tela ampla)</text>
+              <rect x="36" y="58" width="145" height="88" class="svg-panel-cyan" />
+              <rect x="191" y="58" width="73" height="88" class="svg-tint" />
+              <text x="108" y="106" text-anchor="middle" class="svg-text-navy">Conteúdo</text>
+              <text x="227" y="106" text-anchor="middle" class="svg-text-cyan">Apoio</text>
+
+              <rect x="305" y="20" width="185" height="145" class="svg-panel" />
+              <text x="397" y="44" text-anchor="middle" class="svg-text-navy">Tablet (adaptado)</text>
+              <rect x="321" y="58" width="153" height="46" class="svg-panel-cyan" />
+              <rect x="321" y="112" width="153" height="34" class="svg-tint" />
+              <text x="397" y="86" text-anchor="middle" class="svg-text-navy">Conteúdo reorganizado</text>
+
+              <rect x="515" y="20" width="145" height="145" class="svg-panel-cyan" />
+              <text x="587" y="44" text-anchor="middle" class="svg-text-navy">Smartphone</text>
+              <rect x="531" y="58" width="113" height="38" class="svg-panel" />
+              <rect x="531" y="104" width="113" height="42" class="svg-navy-fill" />
+              <text x="587" y="82" text-anchor="middle" class="svg-text-navy">320 px CSS</text>
+              <text x="587" y="130" text-anchor="middle" class="svg-text-white">Sem perda</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 13,
+        shortLabel: `5.11 — Uso de cores`,
+        ref: `Seção 5.11 — Uso de cores`,
+        title: `Uso de cores: a informação não pode depender somente delas`,
+        html: `
+          <div class="prose-block">
+            <p>
+              A cor pode destacar uma informação, indicar estados, diferenciar elementos ou sinalizar erros. Entretanto,
+              nem todas as pessoas percebem as cores da mesma maneira. Por isso, a informação precisa continuar
+              compreensível mesmo quando a cor não é percebida, combinada a relações adequadas de contraste.
+            </p>
+          </div>
+          <h2>Relações de contraste e redundância informativa</h2>
+          <ul class="check-list">
+            <li><strong>Não depender apenas da cor (5.11.1):</strong> associe texto, ícones ou padrões visuais às distinções por cor.</li>
+            <li><strong>Contraste mínimo para texto (5.11.3):</strong> pelo menos <strong>4,5:1</strong> para texto normal e <strong>3:1</strong> para texto em tamanho grande (18pt normal ou 14pt negrito).</li>
+            <li><strong>Contraste aprimorado para texto (5.11.2):</strong> pelo menos <strong>7:1</strong> para texto normal e <strong>4,5:1</strong> para texto grande.</li>
+            <li><strong>Componentes, gráficos e foco (5.11.4, 5.11.5 e 5.11.6):</strong> relação mínima de <strong>3:1</strong> para bordas/estados de componentes, partes essenciais de objetos gráficos e indicador de foco visível.</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Seção 5.11 — Uso de cores na ABNT NBR 17225:2025</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                  <th scope="col">Parâmetro principal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">5.11.1 — Uso de cores</th><td><span class="badge-req">Requisito</span></td><td>Cor não é único meio de transmitir informação</td></tr>
+                <tr><th scope="row">5.11.2 — Contraste para texto (aprimorado)</th><td><span class="badge-rec">Recomendação</span></td><td>7:1 (normal) / 4,5:1 (grande)</td></tr>
+                <tr><th scope="row">5.11.3 — Contraste para texto (mínimo)</th><td><span class="badge-req">Requisito</span></td><td>4,5:1 (normal) / 3:1 (grande)</td></tr>
+                <tr><th scope="row">5.11.4 — Contraste para componentes</th><td><span class="badge-req">Requisito</span></td><td>3:1 com cores adjacentes</td></tr>
+                <tr><th scope="row">5.11.5 — Contraste para objetos gráficos</th><td><span class="badge-req">Requisito</span></td><td>3:1 para compreensão visual</td></tr>
+                <tr><th scope="row">5.11.6 — Contraste para indicador de foco visível</th><td><span class="badge-req">Requisito</span></td><td>3:1 com fundo e entre estados</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 185" role="img" aria-labelledby="diag-p13-title">
+              <title id="diag-p13-title">Exemplos de redundância visual além da cor e níveis de razão de contraste</title>
+              <rect x="20" y="20" width="305" height="145" class="svg-panel" />
+              <text x="172" y="46" text-anchor="middle" class="svg-text-navy">Cor + Símbolo + Texto (5.11.1)</text>
+              <rect x="40" y="64" width="265" height="36" class="svg-panel-cyan" />
+              <text x="56" y="87" class="svg-text-navy">[✓] Concluído — cor + ícone + rótulo</text>
+              <rect x="40" y="112" width="265" height="36" class="svg-stroke-error" />
+              <text x="56" y="135" class="svg-text-error">[!] Erro: campo obrigatório vazio</text>
+
+              <rect x="355" y="20" width="305" height="145" class="svg-panel" />
+              <text x="507" y="46" text-anchor="middle" class="svg-text-navy">Relações de Contraste</text>
+              <rect x="375" y="64" width="120" height="24" class="svg-cyan-fill" />
+              <text x="508" y="81" class="svg-text-dark">3:1 — Foco / UI / Gráficos</text>
+              <rect x="375" y="96" width="180" height="24" class="svg-navy-fill" />
+              <text x="565" y="113" class="svg-text-dark">4,5:1 (AA)</text>
+              <rect x="375" y="128" width="265" height="24" class="svg-navy-fill" />
+              <text x="507" y="145" text-anchor="middle" class="svg-text-white">7:1 — Texto aprimorado (5.11.2)</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 14,
+        shortLabel: `5.12 — Conteúdo textual`,
+        ref: `Seção 5.12 — Conteúdo textual (itens selecionados de 5.12.1 a 5.12.13)`,
+        title: `Conteúdo textual: ler também precisa ser uma experiência acessível`,
+        html: `
+          <p class="lead-text">Não basta disponibilizar um texto. É preciso permitir que diferentes pessoas consigam lê-lo e compreendê-lo.</p>
+          <div class="prose-block">
+            <p>
+              A organização visual e semântica do texto influencia sua legibilidade e compreensão. A norma estabelece
+              requisitos relacionados ao espaçamento, à largura dos blocos de texto, ao redimensionamento e à identificação
+              semântica de trechos especiais.
+            </p>
+          </div>
+          <h2>O que observar em um website?</h2>
+          <ul class="check-list">
+            <li>Espaçamento adequado entre linhas (pelo menos 1,5× o tamanho da fonte) e entre parágrafos (pelo menos 2×).</li>
+            <li>Possibilidade de ajustar o espaçamento entre letras (0,12×) e palavras (0,16×) sem perder conteúdo ou funcionalidade.</li>
+            <li>Largura adequada dos blocos de texto para leitura confortável.</li>
+            <li>Redimensionamento do texto (até 200%) sem perda de conteúdo ou funcionalidade.</li>
+            <li>Identificação semântica de ênfases, citações, abreviações e outros tipos de texto especial.</li>
+          </ul>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Itens selecionados da Seção 5.12 na ABNT NBR 17225:2025 (seção completa: 5.12.1 a 5.12.13)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">5.12.1 — Espaçamento entre as linhas</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.12.2 — Espaçamento entre os parágrafos</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.12.3 — Espaçamento entre as letras</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.12.4 — Espaçamento entre as palavras</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.12.5 — Alinhamento de blocos de texto</th><td><span class="badge-rec">Recomendação</span></td></tr>
+                <tr><th scope="row">5.12.6 — Largura de blocos de texto</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.12.7 — Texto redimensionado</th><td><span class="badge-req">Requisito</span></td></tr>
+                <tr><th scope="row">5.12.8 — Semântica de texto especial</th><td><span class="badge-req">Requisito</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="inset-callout">
+            <span class="callout-label">Abrangência normativa</span>
+            <p>A <strong>Seção 5.12 completa vai de 5.12.1 a 5.12.13</strong>, incluindo também uso de texto especial (5.12.9), definições de significado (5.12.10), siglas e abreviaturas (5.12.11), nível de linguagem (5.12.12) e pronúncia identificada (5.12.13).</p>
+          </div>
+          <div class="inset-callout inset-callout--cyan">
+            <span class="callout-label">Mensagem de destaque</span>
+            <p><strong>A apresentação do texto deve permitir adaptação sem comprometer a informação.</strong></p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 185" role="img" aria-labelledby="diag-p14-title">
+              <title id="diag-p14-title">Comparativo de espaçamento de texto e redimensionamento em 100%, 150% e 200%</title>
+              <rect x="20" y="20" width="300" height="145" class="svg-panel" />
+              <text x="170" y="45" text-anchor="middle" class="svg-text-navy">Espaçamento adequado (5.12.1–5.12.4)</text>
+              <line x1="40" y1="68" x2="295" y2="68" class="svg-line-navy" />
+              <line x1="40" y1="90" x2="275" y2="90" class="svg-line-navy" />
+              <line x1="40" y1="120" x2="295" y2="120" class="svg-line-cyan" />
+              <line x1="40" y1="142" x2="250" y2="142" class="svg-line-cyan" />
+
+              <rect x="345" y="20" width="315" height="145" class="svg-panel-cyan" />
+              <text x="502" y="45" text-anchor="middle" class="svg-text-navy">Redimensionamento sem perda (5.12.7)</text>
+              <rect x="365" y="66" width="76" height="80" class="svg-panel" />
+              <text x="403" y="110" text-anchor="middle" class="svg-text-dark">100%</text>
+              <rect x="455" y="66" width="88" height="80" class="svg-panel" />
+              <text x="499" y="110" text-anchor="middle" class="svg-text-navy">150%</text>
+              <rect x="557" y="66" width="88" height="80" class="svg-navy-fill" />
+              <text x="601" y="110" text-anchor="middle" class="svg-text-white">200%</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 15,
+        shortLabel: `5.14 — Vídeos acessíveis`,
+        ref: `Seção 5.14 — Áudio e vídeo (itens 5.14.2 a 5.14.5 de 5.14.1 a 5.14.10)`,
+        title: `Vídeos acessíveis: legendas, transcrição e audiodescrição`,
+        html: `
+          <p class="lead-text">Áudio e imagem transmitem informações diferentes. Os recursos de acessibilidade precisam contemplar essas diferenças.</p>
+          <div class="prose-block">
+            <p>
+              Um vídeo pode apresentar diálogos, sons, ambientes, ações e informações visuais relevantes. Quando parte dessas
+              informações não pode ser percebida por determinada pessoa, é necessário oferecer recursos equivalentes que
+              garantam o acesso ao conteúdo completo.
+            </p>
+          </div>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Itens de vídeo da Seção 5.14 na ABNT NBR 17225:2025 (seção completa: 5.14.1 a 5.14.10)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                  <th scope="col">Finalidade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.14.2 — Legendas descritivas para vídeo</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>Transcrevem diálogos, efeitos sonoros e sons do ambiente</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.14.3 — Transcrição para vídeo</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                  <td>Alternativa textual completa do conteúdo audiovisual</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.14.4 — Audiodescrição para vídeo</th>
+                  <td><span class="badge-req">Requisito</span></td>
+                  <td>Narração descritiva de informações visuais não presentes no áudio</td>
+                </tr>
+                <tr>
+                  <th scope="row">5.14.5 — Audiodescrição estendida para vídeo</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                  <td>Pausas temporárias no vídeo quando não há intervalo suficiente no áudio</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="inset-callout inset-callout--note">
+            <span class="callout-label">Exceção prevista para audiodescrição</span>
+            <p>
+              A audiodescrição adicional não é exigida quando a <strong>faixa de áudio original já transmite e descreve
+              integralmente</strong> as informações visuais relevantes (por exemplo, um apresentador que lê e explica todo o
+              conteúdo exibido em tela).
+            </p>
+          </div>
+          <div class="inset-callout">
+            <span class="callout-label">Abrangência normativa</span>
+            <p>A <strong>Seção 5.14 completa vai de 5.14.1 a 5.14.10</strong>, contemplando também alternativa em texto para áudio (5.14.1), janela de Libras (5.14.6), controle de áudio (5.14.7), áudio sem ruído (5.14.8) e recursos ao vivo (5.14.9 e 5.14.10).</p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 185" role="img" aria-labelledby="diag-p15-title">
+              <title id="diag-p15-title">Arquitetura de faixas sincronizadas de vídeo acessível: vídeo, áudio, legendas descritivas, audiodescrição e transcrição</title>
+              <rect x="20" y="20" width="640" height="44" class="svg-navy-fill" />
+              <text x="340" y="47" text-anchor="middle" class="svg-text-white">Faixa Principal: Vídeo + Áudio sincronizados</text>
+
+              <rect x="20" y="84" width="200" height="80" class="svg-panel" />
+              <text x="120" y="114" text-anchor="middle" class="svg-text-navy">Legendas descritivas</text>
+              <text x="120" y="136" text-anchor="middle" class="svg-text-cyan">5.14.2 (Requisito)</text>
+
+              <rect x="240" y="84" width="200" height="80" class="svg-panel-cyan" />
+              <text x="340" y="114" text-anchor="middle" class="svg-text-navy">Audiodescrição</text>
+              <text x="340" y="136" text-anchor="middle" class="svg-text-cyan">5.14.4 (Requisito*)</text>
+
+              <rect x="460" y="84" width="200" height="80" class="svg-panel" />
+              <text x="560" y="114" text-anchor="middle" class="svg-text-navy">Transcrição</text>
+              <text x="560" y="136" text-anchor="middle" class="svg-text-cyan">5.14.3 (Recomendação)</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 16,
+        shortLabel: `5.14.6 — Libras`,
+        ref: `Seção 5.14.6 — Janela de Libras para conteúdo em áudio`,
+        title: `Libras e conteúdos multimídia: acessibilidade também é oferecer diferentes formas de acesso`,
+        html: `
+          <div class="prose-block">
+            <p>
+              Para muitas pessoas surdas usuárias da Língua Brasileira de Sinais (Libras), a leitura de legendas em língua
+              portuguesa pode não oferecer a mesma fluência comunicacional que sua primeira língua. A inclusão da janela
+              de Libras amplia a compreensão de conteúdos audiovisuais.
+            </p>
+          </div>
+          <div class="table-wrap">
+            <table class="norm-table">
+              <caption>Enquadramento normativo do item 5.14.6 na ABNT NBR 17225:2025</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Classificação</th>
+                  <th scope="col">Critério WCAG 2.2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">5.14.6 — Janela de Libras para conteúdo em áudio</th>
+                  <td><span class="badge-rec">Recomendação</span></td>
+                  <td>C.S. 1.2.6 (Nível AAA) — áudio pré-gravado em mídia sincronizada</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="inset-callout inset-callout--note">
+            <span class="callout-label">Precisão normativa sobre obrigatoriedade</span>
+            <p>
+              Na ABNT NBR 17225:2025, o item <strong>5.14.6 é classificado como Recomendação</strong> (correspondente ao
+              Critério de Sucesso 1.2.6, Nível AAA da WCAG 2.2) para <strong>áudio pré-gravado em mídia sincronizada</strong>.
+              Portanto, a norma técnica não o estabelece como requisito genérico obrigatório em todo conteúdo web, ainda que
+              legislações ou regulamentos específicos possam exigir Libras em determinados contextos institucionais.
+            </p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 190" role="img" aria-labelledby="diag-p16-title">
+              <title id="diag-p16-title">Esquema de reprodutor multimídia com janela de Libras integrada e controles acessíveis</title>
+              <rect x="40" y="18" width="600" height="154" class="svg-panel" />
+              <rect x="60" y="34" width="385" height="94" class="svg-panel-cyan" />
+              <text x="252" y="85" text-anchor="middle" class="svg-text-navy">Conteúdo de Vídeo (Mídia sincronizada)</text>
+
+              <rect x="462" y="34" width="158" height="94" class="svg-navy-fill" />
+              <text x="541" y="74" text-anchor="middle" class="svg-text-white">Janela de Libras</text>
+              <text x="541" y="96" text-anchor="middle" class="svg-text-white">5.14.6 (Rec. AAA)</text>
+
+              <rect x="60" y="138" width="560" height="24" class="svg-tint" />
+              <text x="340" y="155" text-anchor="middle" class="svg-text-cyan">Controles acessíveis por teclado: Reproduzir | Legendas | Audiodescrição | Libras</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 17,
+        shortLabel: `Seção 4 — Requisitos e Recomendações`,
+        ref: `Seção 4 — Conformidade`,
+        title: `Requisitos e Recomendações: qual é a diferença?`,
+        html: `
+          <div class="prose-block">
+            <p>
+              A ABNT NBR 17225:2025 organiza os itens da Seção 5 em duas categorias expressas: <strong>requisitos</strong> e
+              <strong>recomendações</strong>. Compreender essa distinção é essencial para avaliar a conformidade de um website
+              e planejar melhorias contínuas.
+            </p>
+          </div>
+          <div class="card-grid">
+            <section class="info-card info-card--navy">
+              <h3>REQUISITO</h3>
+              <p>
+                É o item que <strong>precisa ser atendido</strong> para que a página ou website alcance a conformidade regular
+                com a norma. Todos os itens marcados como <em>Requisito</em> compõem a base obrigatória da avaliação normativa.
+              </p>
+            </section>
+            <section class="info-card">
+              <h3>RECOMENDAÇÃO</h3>
+              <p>
+                Representa boas práticas e parâmetros adicionais voltados a oferecer <strong>maior qualidade e conforto</strong>
+                à experiência acessível. Seu atendimento eleva o nível de acessibilidade do projeto, compondo a conformidade plena.
+              </p>
+            </section>
+          </div>
+          <div class="inset-callout inset-callout--note">
+            <span class="callout-label">Atenção à classificação expressa da norma</span>
+            <p>
+              Embora a Seção 4 aponte que o Nível AAA da WCAG 2.2 está sinalizado como recomendação, não se deve reduzir essa
+              divisão a uma equivalência mecânica simplista entre “recomendação” e “nível AAA”. Na ABNT NBR 17225:2025, a
+              classificação de cada subseção como <strong>Requisito</strong> ou <strong>Recomendação</strong> consta
+              expressamente no texto de cada item da Seção 5, havendo recomendações vinculadas também a critérios de Nível A
+              e AA (como 5.1.5 Uso de foco e 5.1.10 Atalhos de teclado).
+            </p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 175" role="img" aria-labelledby="diag-p17-title">
+              <title id="diag-p17-title">Comparação estrutural entre Requisito e Recomendação conforme a Seção 4 da norma</title>
+              <rect x="20" y="20" width="305" height="135" class="svg-navy-fill" />
+              <text x="172" y="54" text-anchor="middle" class="svg-text-white">REQUISITO</text>
+              <text x="172" y="86" text-anchor="middle" class="svg-text-white">Atendimento necessário para</text>
+              <text x="172" y="106" text-anchor="middle" class="svg-text-white">a conformidade regular</text>
+              <text x="172" y="132" text-anchor="middle" class="svg-text-white">(Classificação expressa na Seção 5)</text>
+
+              <rect x="355" y="20" width="305" height="135" class="svg-panel-cyan" />
+              <text x="507" y="54" text-anchor="middle" class="svg-text-navy">RECOMENDAÇÃO</text>
+              <text x="507" y="86" text-anchor="middle" class="svg-text-dark">Amplia qualidade e conforto;</text>
+              <text x="507" y="106" text-anchor="middle" class="svg-text-dark">integra a conformidade plena</text>
+              <text x="507" y="132" text-anchor="middle" class="svg-text-cyan">(Classificação expressa na Seção 5)</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 18,
+        shortLabel: `Seção 4 — Conformidade`,
+        ref: `Seção 4 — Conformidade`,
+        title: `Como compreender a conformidade?`,
+        html: `
+          <div class="prose-block">
+            <p>
+              A ABNT NBR 17225:2025 estabelece <strong>dois tipos de conformidade</strong> na Seção 4, representando diferentes
+              abrangências de atendimento às diretrizes apresentadas.
+            </p>
+          </div>
+          <div class="card-grid">
+            <section class="info-card info-card--navy">
+              <h3>Conformidade regular</h3>
+              <p>
+                É atingida com o atendimento de <strong>todos os itens estabelecidos como requisitos</strong>. Está alinhada
+                aos <strong>Níveis A e AA da WCAG 2.2</strong>, considerados o nível mínimo de conformidade indicado pela norma.
+              </p>
+            </section>
+            <section class="info-card">
+              <h3>Conformidade plena</h3>
+              <p>
+                Abrange <strong>todos os requisitos e também as recomendações</strong>. Caso uma ou mais recomendações não sejam
+                atendidas, é necessária uma <strong>justificativa razoável</strong>.
+              </p>
+            </section>
+          </div>
+          <div class="inset-callout inset-callout--cyan">
+            <span class="callout-label">Limites e boas práticas complementares</span>
+            <p>
+              A conformidade com a ABNT NBR 17225:2025 não representa concessão automática de selo de certificação e
+              <strong>não isenta</strong> o desenvolvedor de implementar outras boas práticas não abrangidas pela norma, como
+              os <strong>princípios de usabilidade</strong>.
+            </p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 185" role="img" aria-labelledby="diag-p18-title">
+              <title id="diag-p18-title">Fluxograma dos dois níveis de conformidade da Seção 4: regular e plena</title>
+              <rect x="20" y="34" width="185" height="92" class="svg-navy-fill" />
+              <text x="112" y="66" text-anchor="middle" class="svg-text-white">Todos os Requisitos</text>
+              <text x="112" y="88" text-anchor="middle" class="svg-text-white">atendidos</text>
+              <text x="112" y="108" text-anchor="middle" class="svg-text-white">(Alinhado a A e AA)</text>
+
+              <line x1="205" y1="80" x2="245" y2="80" class="svg-line-cyan" />
+
+              <rect x="245" y="34" width="175" height="92" class="svg-panel" />
+              <text x="332" y="68" text-anchor="middle" class="svg-text-navy">Conformidade</text>
+              <text x="332" y="88" text-anchor="middle" class="svg-text-navy">Regular</text>
+              <text x="332" y="110" text-anchor="middle" class="svg-text-cyan">Nível mínimo indicado</text>
+
+              <line x1="420" y1="80" x2="460" y2="80" class="svg-line-cyan" />
+
+              <rect x="460" y="34" width="200" height="92" class="svg-panel-cyan" />
+              <text x="560" y="62" text-anchor="middle" class="svg-text-navy">Conformidade Plena</text>
+              <text x="560" y="84" text-anchor="middle" class="svg-text-dark">+ Recomendações</text>
+              <text x="560" y="104" text-anchor="middle" class="svg-text-cyan">(ou justificativa razoável)</text>
+
+              <rect x="20" y="142" width="640" height="28" class="svg-tint" />
+              <text x="340" y="161" text-anchor="middle" class="svg-text-navy">Não dispensa princípios de usabilidade nem outras boas práticas (Seção 4)</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 19,
+        shortLabel: `Anexos A, B e C`,
+        ref: `Anexos A, B e C (informativos)`,
+        title: `Os anexos também ajudam a compreender a norma`,
+        html: `
+          <div class="prose-block">
+            <p>
+              Além das diretrizes da Seção 5, a ABNT NBR 17225:2025 apresenta <strong>três anexos informativos</strong> que
+              complementam o entendimento técnico, ajudam a identificar barreiras recorrentes e apoiam avaliações práticas.
+            </p>
+          </div>
+          <div class="card-grid">
+            <section class="info-card">
+              <h3>Anexo A (informativo) — Itens problemáticos para acessibilidade</h3>
+              <p>
+                Apresenta situações e recursos comuns na web que podem criar barreiras, como CAPTCHA, reconhecimento facial e
+                biometria, conteúdo exibido apenas por foco ou cursor, conteúdo inserido por CSS, conteúdo de terceiros,
+                componentes customizados, arquivos acessíveis, tabelas para leiaute e marcação conforme a especificação.
+              </p>
+            </section>
+            <section class="info-card">
+              <h3>Anexo B (informativo) — Desempenho funcional</h3>
+              <p>
+                Descreve condições de utilização das Tecnologias de Informação e Comunicação relacionadas a diferentes
+                capacidades: sem visão, visão limitada, sem percepção da cor, sem audição, audição limitada, sem voz,
+                manipulação ou força limitadas, alcance limitado, epilepsia fotossensível e cognição limitada.
+              </p>
+            </section>
+            <section class="info-card info-card--navy">
+              <h3>Anexo C (informativo) — Checklist</h3>
+              <p>
+                Organiza os itens da norma em 16 tabelas (Tabelas C.1 a C.16), indicando classificação (Requisito ou
+                Recomendação), critérios de sucesso e níveis da WCAG 2.2, com campos de verificação: <strong>Sim</strong>,
+                <strong>Não</strong> e <strong>N/A</strong>.
+              </p>
+            </section>
+          </div>
+          <div class="inset-callout inset-callout--note">
+            <span class="callout-label">Caráter informativo dos anexos</span>
+            <p>
+              Os Anexos A, B e C possuem caráter <strong>informativo</strong>: oferecem apoio, contextualização e instrumento
+              de checagem, enquanto as prescrições normativas de atendimento estão estabelecidas na Seção 5 e na Seção 4.
+            </p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 185" role="img" aria-labelledby="diag-p19-title">
+              <title id="diag-p19-title">Relação entre o corpo normativo da Seção 5 e os três Anexos informativos A, B e C</title>
+              <rect x="200" y="18" width="280" height="46" class="svg-navy-fill" />
+              <text x="340" y="46" text-anchor="middle" class="svg-text-white">Seção 5 — Diretrizes (Normativa)</text>
+
+              <line x1="250" y1="64" x2="122" y2="104" class="svg-line-cyan" />
+              <line x1="340" y1="64" x2="340" y2="104" class="svg-line-cyan" />
+              <line x1="430" y1="64" x2="558" y2="104" class="svg-line-cyan" />
+
+              <rect x="20" y="104" width="204" height="64" class="svg-panel" />
+              <text x="122" y="130" text-anchor="middle" class="svg-text-navy">Anexo A (informativo)</text>
+              <text x="122" y="150" text-anchor="middle" class="svg-text-cyan">Itens problemáticos</text>
+
+              <rect x="238" y="104" width="204" height="64" class="svg-panel" />
+              <text x="340" y="130" text-anchor="middle" class="svg-text-navy">Anexo B (informativo)</text>
+              <text x="340" y="150" text-anchor="middle" class="svg-text-cyan">Desempenho funcional</text>
+
+              <rect x="456" y="104" width="204" height="64" class="svg-panel-cyan" />
+              <text x="558" y="130" text-anchor="middle" class="svg-text-navy">Anexo C (informativo)</text>
+              <text x="558" y="150" text-anchor="middle" class="svg-text-cyan">Checklist (16 tabelas)</text>
+            </svg>
+          </div>
+        `
+      },
+      {
+        num: 20,
+        shortLabel: `Encerramento`,
+        ref: `Seções 1 e 4 — Encerramento`,
+        title: `A acessibilidade não se resume a uma lista de verificações`,
+        html: `
+          <div class="prose-block">
+            <p>
+              Conhecer a ABNT NBR 17225:2025 é um passo importante para compreender e avaliar a acessibilidade de websites.
+            </p>
+            <p>
+              A norma oferece uma estrutura técnica para identificar barreiras, estabelecer critérios e orientar melhorias.
+              Mas a experiência das pessoas não termina no atendimento de uma lista de requisitos.
+            </p>
+            <p>
+              A própria norma ressalta que sua aplicação não dispensa outras boas práticas, como os princípios de usabilidade.
+              Acessibilidade digital exige atenção contínua à forma como as pessoas percebem, compreendem, navegam e interagem
+              com os conteúdos e funcionalidades.
+            </p>
+            <p>
+              Que este manual seja um ponto de partida para observar a web com mais responsabilidade técnica e compromisso
+              com a inclusão.
+            </p>
+          </div>
+          <div class="diagram-panel">
+            <svg viewBox="0 0 680 190" role="img" aria-labelledby="diag-p20-title">
+              <title id="diag-p20-title">Convergência entre estrutura técnica da norma, princípios de usabilidade e atenção contínua para inclusão digital</title>
+              <rect x="20" y="24" width="180" height="58" class="svg-panel" />
+              <text x="110" y="50" text-anchor="middle" class="svg-text-navy">Estrutura técnica</text>
+              <text x="110" y="70" text-anchor="middle" class="svg-text-cyan">ABNT NBR 17225:2025</text>
+
+              <rect x="250" y="24" width="180" height="58" class="svg-panel" />
+              <text x="340" y="50" text-anchor="middle" class="svg-text-navy">Usabilidade</text>
+              <text x="340" y="70" text-anchor="middle" class="svg-text-cyan">Boas práticas contínuas</text>
+
+              <rect x="480" y="24" width="180" height="58" class="svg-panel" />
+              <text x="570" y="50" text-anchor="middle" class="svg-text-navy">Testes e revisão</text>
+              <text x="570" y="70" text-anchor="middle" class="svg-text-cyan">Uso real por pessoas</text>
+
+              <line x1="110" y1="82" x2="290" y2="118" class="svg-line-cyan" />
+              <line x1="340" y1="82" x2="340" y2="118" class="svg-line-navy" />
+              <line x1="570" y1="82" x2="390" y2="118" class="svg-line-cyan" />
+
+              <rect x="130" y="118" width="420" height="54" class="svg-navy-fill" />
+              <text x="340" y="142" text-anchor="middle" class="svg-text-white">Experiência Digital Acessível e Inclusiva</text>
+              <text x="340" y="160" text-anchor="middle" class="svg-text-white">Responsabilidade técnica contínua</text>
+            </svg>
+          </div>
+        `
+      }
+    ];
+
+    let currentPage = 1;
+
+    function padTwo(n) {
+      return n < 10 ? `0${n}` : `${n}`;
+    }
+
+    function renderPagination() {
+      const list = document.getElementById(`pagination-list`);
+      const status = document.getElementById(`pagination-status`);
+      const prevBtn = document.getElementById(`btn-prev`);
+      const nextBtn = document.getElementById(`btn-next`);
+      const pageObj = PAGES[currentPage - 1];
+
+      if (status && pageObj) {
+        status.textContent = `Página ${currentPage} de ${PAGES.length} — ${pageObj.shortLabel}`;
+      }
+      if (prevBtn) {
+        prevBtn.disabled = currentPage <= 1;
+      }
+      if (nextBtn) {
+        nextBtn.disabled = currentPage >= PAGES.length;
+      }
+      if (!list) return;
+
+      list.innerHTML = ``;
+      for (let i = 1; i <= PAGES.length; i += 1) {
+        const li = document.createElement(`li`);
+        const btn = document.createElement(`button`);
+        btn.type = `button`;
+        btn.className = `page-num-btn`;
+        btn.textContent = `${i}`;
+        btn.setAttribute(`aria-label`, `Ir para a página ${i}: ${PAGES[i - 1].shortLabel}`);
+        if (i === currentPage) {
+          btn.setAttribute(`aria-current`, `page`);
+        }
+        btn.onclick = function () {
+          goToPage(i, true);
+        };
+        li.appendChild(btn);
+        list.appendChild(li);
+      }
+    }
+
+    function goToPage(pageNumber, moveFocus) {
+      const target = Number(pageNumber);
+      if (Number.isNaN(target) || target < 1 || target > PAGES.length) {
+        return;
+      }
+      currentPage = target;
+      const pageObj = PAGES[currentPage - 1];
+      const article = document.getElementById(`pagina-atual`);
+      const selector = document.getElementById(`seletor-tema`);
+      const announcer = document.getElementById(`live-announcer`);
+
+      if (!article || !pageObj) return;
+
+      const titleClass = pageObj.isCover ? `cover-title` : ``;
+      article.innerHTML = `
+        <div class="article-meta-bar">
+          <span class="page-badge">Página ${padTwo(pageObj.num)} de 20 — MANUAL 01 | 2026</span>
+          <span class="norm-ref-tag">${pageObj.ref}</span>
+        </div>
+        <h1 id="page-title" class="${titleClass}" tabindex="-1">${pageObj.title}</h1>
+        ${pageObj.html}
+        <div class="page-signature">${SIGNATURE}</div>
+      `;
+
+      if (selector) {
+        selector.value = `${currentPage}`;
+      }
+
+      renderPagination();
+
+      if (announcer) {
+        announcer.textContent = `Página ${currentPage} de ${PAGES.length} exibida: ${pageObj.title}`;
+      }
+
+      if (moveFocus) {
+        const heading = document.getElementById(`page-title`);
+        if (heading) {
+          heading.focus();
+        }
+      }
+    }
+
+    function goToPageFromSelect(value) {
+      goToPage(value, true);
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        goToPage(currentPage - 1, true);
+      }
+    }
+
+    function nextPage() {
+      if (currentPage < PAGES.length) {
+        goToPage(currentPage + 1, true);
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, function () {
+      goToPage(1, false);
+    });
+  </script>
+</body>
+</html>
